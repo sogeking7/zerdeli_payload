@@ -10,6 +10,7 @@ import HeroSection from '@/components/hero-section'
 import { TestimonialsSection } from '@/components/testimonials-section'
 import { Description } from '@radix-ui/react-dialog'
 import NumbersSection from '@/components/numbers-section'
+import AdditionSections from '@/components/addition-sections'
 
 interface Review {
   title: string
@@ -47,6 +48,7 @@ export default async function HomePage() {
       <HeroSection />
       <TestimonialsSection reviews={reviews} />
       <NumbersSection />
+      <AdditionSections />
     </div>
   )
 }
