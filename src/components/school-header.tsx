@@ -10,6 +10,7 @@ import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer'
 import { Menu, ChevronDown, Search, X } from 'lucide-react'
 import Image from 'next/image'
 import { useState } from 'react'
+import Link from 'next/link'
 
 const navItems = [
   {
@@ -140,40 +141,38 @@ export default function SchoolHeader() {
                     <div key={index}>
                       {item.dropdown ? (
                         <div className="flex flex-col">
-                          <span className="text-lg font-semibold text-[#000000] mb-2">
-                            {item.label}
-                          </span>
+                          <Link href={item.href || ''}>
+                            <span className="text-lg font-semibold text-[#000000] mb-2">
+                              {item.label}
+                            </span>
+                          </Link>
                           {item.dropdown.map((subItem, subIndex) => (
-                            <a
+                            <Button
+                              variant="link"
                               key={subIndex}
-                              href={subItem.href}
-                              className="text-[#000000] rounded-lg hover:bg-gray-50 px-3 py-2 text-sm"
+                              className="!text-left justify-start"
                               onClick={() => setIsMobileMenuOpen(false)}
                             >
-                              {subItem.label}
-                            </a>
+                              <Link href={subItem.href}>{subItem.label}</Link>
+                            </Button>
                           ))}
                         </div>
                       ) : (
-                        <a
-                          href={item.href}
-                          className="text-lg font-semibold rounded-lg text-[#000000] hover:bg-gray-50 px-3 py-2"
-                          onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                          {item.label}
-                        </a>
+                        <Link href={item.href || ''}>
+                          <span className="text-lg font-semibold text-[#000000] mb-2">
+                            {item.label}
+                          </span>
+                        </Link>
                       )}
                     </div>
                   ))}
-                  <div className="pt-4">
-                    <a
-                      href="tel:+77077421212"
-                      className="text-[#000000] rounded-lg hover:bg-gray-50 px-3 py-2 text-sm block"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      +7 707 742-12-12
-                    </a>
-                  </div>
+                  <Button
+                    variant="link"
+                    className="!text-left justify-start"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <Link href="tel:+77077421212">+7 707 742-12-12</Link>
+                  </Button>
                 </nav>
               </DrawerContent>
             </Drawer>
