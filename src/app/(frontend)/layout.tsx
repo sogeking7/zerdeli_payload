@@ -1,18 +1,27 @@
 import React from 'react'
 import './styles.css'
+import { Metadata } from 'next'
+import SchoolHeader from '@/components/school-header'
 
-export const metadata = {
-  description: 'A blank template using Payload in a Next.js app.',
-  title: 'Payload Blank Template',
+import { Manrope } from 'next/font/google'
+
+const manrope = Manrope({ variable: '--font-manrope', subsets: ['latin'] })
+
+export const metadata: Metadata = {
+  description: 'Школа, которая открывает перспективы.',
+  title: 'Zerdeli',
 }
 
 export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props
 
   return (
-    <html lang="en">
-      <body>
-        <main>{children}</main>
+    <html lang="kk">
+      <body className={`${manrope.variable} font-manrope`}>
+        <main>
+          <SchoolHeader />
+          {children}
+        </main>
       </body>
     </html>
   )
