@@ -7,6 +7,31 @@ import { fileURLToPath } from 'url'
 import config from '@/payload.config'
 import SchoolHeader from '@/components/school-header'
 import HeroSection from '@/components/hero-section'
+import { TestimonialsSection } from '@/components/testimonials-section'
+import { Description } from '@radix-ui/react-dialog'
+
+interface Review {
+  title: string
+  description: string
+}
+const reviews: Review[] = [
+  {
+    title: 'Прозрачная система, контроль качества ',
+    description: 'Система ежемесячной оценки и контроля качества',
+  },
+  {
+    title: 'Лучшие учителя — ключ к качественному образованию',
+    description: 'Выпускники Болашак',
+  },
+  {
+    title: 'Be the best, win the grant!',
+    description: 'Система мотивации лучших учеников',
+  },
+  {
+    title: 'Авторская программа и книги',
+    description: 'Сильная математика, углубленная  логика',
+  },
+]
 
 export default async function HomePage() {
   const headers = await getHeaders()
@@ -19,6 +44,7 @@ export default async function HomePage() {
   return (
     <div>
       <HeroSection />
+      <TestimonialsSection reviews={reviews} />
     </div>
   )
 }
