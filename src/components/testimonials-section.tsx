@@ -47,7 +47,7 @@ export const TestimonialsSection = ({
   }
 
   return (
-    <section className="relative py-20 overflow-hidden">
+    <section className="relative py-10 overflow-hidden">
       <div className="container mx-auto  sm:px-6 lg:px-8 relative">
         {/* Header */}
         <div className="max-sm:px-4 text-center mb-8 md:mb-16 relative">
