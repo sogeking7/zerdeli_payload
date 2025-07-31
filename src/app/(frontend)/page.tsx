@@ -11,6 +11,10 @@ import { TestimonialsSection } from '@/components/testimonials-section'
 import { Description } from '@radix-ui/react-dialog'
 import NumbersSection from '@/components/numbers-section'
 import AdditionSections from '@/components/addition-sections'
+import LifeAtZisSection from '@/components/lifeatziscction'
+import FaqSection from '@/components/faq-section'
+import ExamBanner from '@/components/exambanner-section'
+import Footer from '@/components/footer-section'
 
 interface Review {
   title: string
@@ -49,6 +53,10 @@ export default async function HomePage() {
       <TestimonialsSection reviews={reviews} />
       <NumbersSection />
       <AdditionSections />
+      <LifeAtZisSection/>
+      <FaqSection/>
+      <ExamBanner/>
+      <Footer/>
     </div>
   )
 }
