@@ -11,14 +11,15 @@ import { Menu, ChevronDown, Search, X } from 'lucide-react'
 import Image from 'next/image'
 import { useState } from 'react'
 import Link from 'next/link'
+import Container from './custom/Container'
 
 const navItems = [
   {
     label: 'О школе',
     dropdown: [
-      { label: 'История школы', href: '#' },
-      { label: 'Наша миссия', href: '#' },
-      { label: 'Преподаватели', href: '#' },
+      { label: 'О школе', href: '/about' },
+      // { label: 'Наша миссия', href: '#' },
+      // { label: 'Преподаватели', href: '#' },
     ],
   },
   {
@@ -52,10 +53,12 @@ export default function SchoolHeader() {
 
   return (
     <div className="bg-white border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Container>
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Image src={'/svg/logo.svg'} width={80} height={50} alt="Zerdeli" />
+          <Link href="/">
+            <Image src={'/svg/logo.svg'} width={80} height={50} alt="Zerdeli" />
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-4">
@@ -178,7 +181,7 @@ export default function SchoolHeader() {
             </Drawer>
           </div>
         </div>
-      </div>
+      </Container>
     </div>
   )
 }
