@@ -7,6 +7,11 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
+import AboutCarousel from '@/features/about/AboutCarousel'
+import Image from 'next/image'
+
+import AboutImage1 from '@/../public/about-1.webp'
+import AboutImage2 from '@/../public/about-2.webp'
 
 export default function AboutPage() {
   return (
@@ -33,6 +38,17 @@ export default function AboutPage() {
             английский язык и информатику, а также воспитывают детей прививая национальную
             идентичность.
           </p>
+        </div>
+        <div className="space-y-6 my-10">
+          <div className="grid grid-cols-12 gap-6">
+            <div className="col-span-full md:col-span-7 rounded-2xl">
+              <Image src={AboutImage1} alt="about-1" width={800} height={500} />
+            </div>
+            <div className="col-span-full md:col-span-5 rounded-2xl">
+              <Image src={AboutImage2} alt="about-2" width={800} height={500} />
+            </div>
+          </div>
+          <AboutCarousel />
         </div>
       </div>
     </Container>
