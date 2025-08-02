@@ -1,5 +1,5 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 html {
   scroll-behavior: smooth;
@@ -123,20 +123,11 @@ html {
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-/* ... ваш код ... */
-
-
-@layer base {
-  .marquee-container {
-    -webkit-mask-image: linear-gradient(to right, hsl(0 0% 0% / 0), hsl(0 0% 0% / 1) 10%, hsl(0 0% 0% / 1) 90%, hsl(0 0% 0% / 0));
-    mask-image: linear-gradient(to right, hsl(0 0% 0% / 0), hsl(0 0% 0% / 1) 10%, hsl(0 0% 0% / 1) 90%, hsl(0 0% 0% / 0));
-  }
-}
-
 @keyframes marquee {
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(-50%);
   }
@@ -146,20 +137,16 @@ html {
   from {
     transform: translateX(-50%);
   }
+
   to {
     transform: translateX(0);
   }
 }
 
 .animate-marquee {
-  animation: marquee 80s linear infinite;
+  animation: marquee 20s linear infinite;
 }
 
 .animate-marquee-reverse {
-  animation: marquee-reverse 80s linear infinite;
-}
-
-
-body {
-  @apply bg-background text-foreground;
+  animation: marquee-reverse 20s linear infinite;
 }
