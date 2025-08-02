@@ -11,16 +11,12 @@ interface FooterLinksColumnProps {
 
 const FooterLinksColumn = ({ title, links }: FooterLinksColumnProps) => (
   <div>
-    <p className="text-xl font-semibold text-black mb-8">{title}</p>
-    <div className="flex flex-col gap-5">
+    <p className="text-xl font-semibold text-black mb-4">{title}</p>
+    <div className="flex flex-col gap-4">
       {links.map((link, index) => (
-        <a
-          key={index}
-          href={link.href}
-          className="text-base text-left text-black/60 hover:text-black transition-colors"
-        >
+        <Link key={index} href={link.href} className="text-sm text-black/60">
           {link.text}
-        </a>
+        </Link>
       ))}
     </div>
   </div>
@@ -74,29 +70,29 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="bg-white w-full py-16">
+    <footer className="bg-white w-full py-8 md:py-16 max-md:border-t max-md:border-border max-md:mt-20">
       <Container>
-        {/* Верхняя часть с лого и ссылками */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Лого и соцсети */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           <div className="flex flex-col gap-8">
-            <Link href="#">
+            <Link href="/">
               <Image src="/logo.png" alt="Zerdeli Logo" width={120} height={69} />
             </Link>
             <div className="space-y-4">
-              <p className="text-base  text-black/60">Мы в соц сетях</p>
+              <p className="text-sm text-black/60">Мы в соц сетях</p>
               <div className="flex gap-6">
-                <a href="#" aria-label="Whatsapp">
+                <Link href="#" aria-label="Whatsapp">
                   <Image alt="whatsapp" src="/svg/whatsapp.svg" width={20} height={20} />
-                </a>
-                <a href="#" aria-label="Instagram">
+                </Link>
+                <Link href="#" aria-label="Instagram">
                   <Image alt="instagram" src="/svg/instagram.svg" width={20} height={20} />
-                </a>
-                <a href="#" aria-label="Telegram">
+                </Link>
+                <Link href="#" aria-label="Telegram">
                   <Image alt="telegram" src="/svg/telegram.svg" width={20} height={20} />
-                </a>
+                </Link>
               </div>
-              <p className="text-sm text-black/60">© Zerdeli International School, 2025</p>
+              <p className="text-xs text-black/60">
+                © Zerdeli International School, {new Date().getFullYear()}
+              </p>
             </div>
           </div>
           {/* Колонки ссылок */}
@@ -106,14 +102,14 @@ export default function Footer() {
         </div>
 
         {/* Нижняя часть с контактами */}
-        <div className="border-t border-black/10 mt-12 pt-8">
+        <div className="border-t border-black/10 mt-8 pt-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
             <p className="text-xl font-semibold text-left text-black col-span-1">Контакты</p>
             {contacts.map((contact, index) => (
-              <div key={index} className="flex flex-col gap-3">
-                <p className="text-base font-semibold text-left text-black/80">{contact.city}</p>
-                <p className="text-base text-left text-black/60">{contact.address}</p>
-                <p className="text-base text-left text-black/60">{contact.phone}</p>
+              <div key={index} className="flex flex-col gap-2">
+                <p className="text-sm font-semibold text-black/80">{contact.city}</p>
+                <p className="text-sm text-black/60">{contact.address}</p>
+                <p className="text-sm text-black/60">{contact.phone}</p>
               </div>
             ))}
           </div>

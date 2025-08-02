@@ -69,9 +69,9 @@ export default function FaqSection() {
   }
 
   return (
-    <Container>
-      <div className="my-12">
-        <h2 className="text-2xl md:text-4xl text-center mb-12">
+    <section id="faq">
+      <Container>
+        <h2 className="text-2xl md:text-4xl text-center mb-10">
           Часто задаваемые
           <br />
           вопросы
@@ -88,7 +88,7 @@ export default function FaqSection() {
             />
           ))}
         </div>
-      </div>
-    </Container>
+      </Container>
+    </section>
   )
 }

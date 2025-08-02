@@ -1,9 +1,10 @@
+import Container from '@/components/custom/Container'
 import Image from 'next/image'
 
 export default function NumbersSection() {
   return (
-    <section className="relative py-10 overflow-hidden">
-      <div className="container mx-auto  sm:px-6 lg:px-8 relative">
+    <section id="numbers">
+      <Container className="max-md:!p-0">
         <div className="bg-[#F6F6F6] sm:rounded-2xl p-8 md:p-14 relative min-h-[560px]">
           <div className="md:bg-white/50 md:backdrop-blur-sm md:w-full lg:w-1/2 h-full md:p-10 relative z-10 rounded-2xl">
             <div className="grid grid-cols-2 gap-6 md:gap-10">
@@ -36,7 +37,7 @@ export default function NumbersSection() {
             height={400}
           />
         </div>
-      </div>
+      </Container>
     </section>
   )
 }

@@ -45,30 +45,32 @@ export default function AdditionSections() {
   const extendedRow2 = [...row2Data, ...row2Data]
 
   return (
-    <section className="flex flex-col items-center bg-white w-full py-16 md:py-24 overflow-hidden">
-      <h2 className="text-2xl md:text-4xl text-center text-black mb-16">
-        Дополнительные занятия для развития ребенка
-      </h2>
+    <section id="additional">
+      <div className="flex flex-col items-center w-full overflow-hidden">
+        <h2 className="text-2xl md:text-4xl text-center text-black mb-10">
+          <span>Дополнительные занятия</span> <br /> для развития ребенка
+        </h2>
 
-      {/* Первый ряд, движется вправо */}
-      <div className="marquee-container w-full mb-4 md:mb-6">
-        <div className="flex animate-marquee-reverse ">
-          {extendedRow1.map((section, index) => (
-            <div key={`row1-${index}`} className="mx-2 md:mx-3">
-              <SectionCard title={section.title} icon={section.icon} />
-            </div>
-          ))}
+        {/* Первый ряд, движется вправо */}
+        <div className="marquee-container w-full mb-4 md:mb-6">
+          <div className="flex animate-marquee-reverse ">
+            {extendedRow1.map((section, index) => (
+              <div key={`row1-${index}`} className="mx-2 md:mx-3">
+                <SectionCard title={section.title} icon={section.icon} />
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
 
-      {/* Второй ряд, движется влево */}
-      <div className="marquee-container w-full">
-        <div className="flex animate-marquee">
-          {extendedRow2.map((section, index) => (
-            <div key={`row2-${index}`} className="mx-2 md:mx-3">
-              <SectionCard title={section.title} icon={section.icon} />
-            </div>
-          ))}
+        {/* Второй ряд, движется влево */}
+        <div className="marquee-container w-full">
+          <div className="flex animate-marquee">
+            {extendedRow2.map((section, index) => (
+              <div key={`row2-${index}`} className="mx-2 md:mx-3">
+                <SectionCard title={section.title} icon={section.icon} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

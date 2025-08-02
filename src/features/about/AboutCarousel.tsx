@@ -1,9 +1,10 @@
 'use client'
 
 import React from 'react'
-import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from '@/components/ui/carousel'
+import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
+import useCarousel from '@/hooks/useCarousel'
 
 const aboutBullets = [
   {
@@ -31,22 +32,10 @@ const aboutBullets = [
 ]
 
 export default function AboutCarousel() {
-  const [api, setApi] = React.useState<CarouselApi>()
-  const [current, setCurrent] = React.useState(0)
-  const [count, setCount] = React.useState(0)
-  React.useEffect(() => {
-    if (!api) {
-      return
-    }
-    setCount(api.scrollSnapList().length)
-    setCurrent(api.selectedScrollSnap() + 1)
-    api.on('select', () => {
-      setCurrent(api.selectedScrollSnap() + 1)
-    })
-  }, [api])
+  const { setApi, current } = useCarousel()
 
   return (
-    <div>
+    <section id="about">
       <Carousel setApi={setApi}>
         <CarouselContent className="-ml-2 md:-ml-4">
           {aboutBullets.map((i, idx) => (
@@ -79,6 +68,6 @@ export default function AboutCarousel() {
           ></div>
         ))}
       </div>
-    </div>
+    </section>
   )
 }

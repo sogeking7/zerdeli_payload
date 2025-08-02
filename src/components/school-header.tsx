@@ -1,4 +1,3 @@
-'use client'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -7,9 +6,8 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer'
-import { Menu, ChevronDown, Search, X } from 'lucide-react'
+import { Menu, ChevronDown, Search } from 'lucide-react'
 import Image from 'next/image'
-import { useState } from 'react'
 import Link from 'next/link'
 import Container from './custom/Container'
 
@@ -49,12 +47,10 @@ const languageOptions = [
 ]
 
 export default function SchoolHeader() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-
   return (
-    <div className="bg-white border-b border-gray-100">
+    <header className="bg-white fixed top-0 z-20 w-full h-16 border-b border-gray-100">
       <Container>
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center h-full justify-between">
           {/* Logo */}
           <Link href="/">
             <Image src={'/svg/logo.svg'} width={80} height={50} alt="Zerdeli" />
@@ -129,12 +125,7 @@ export default function SchoolHeader() {
             {/* Mobile Menu Trigger */}
             <Drawer direction="right">
               <DrawerTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="md:hidden"
-                  onClick={() => setIsMobileMenuOpen(true)}
-                >
+                <Button variant="ghost" size="icon" className="md:hidden">
                   <Menu strokeWidth={1.5} className="size-5" />
                 </Button>
               </DrawerTrigger>
@@ -154,7 +145,6 @@ export default function SchoolHeader() {
                               variant="link"
                               key={subIndex}
                               className="!text-left justify-start"
-                              onClick={() => setIsMobileMenuOpen(false)}
                             >
                               <Link href={subItem.href}>{subItem.label}</Link>
                             </Button>
@@ -169,11 +159,7 @@ export default function SchoolHeader() {
                       )}
                     </div>
                   ))}
-                  <Button
-                    variant="link"
-                    className="!text-left justify-start"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
+                  <Button variant="link" className="!text-left justify-start">
                     <Link href="tel:+77077421212">+7 707 742-12-12</Link>
                   </Button>
                 </nav>
@@ -182,6 +168,6 @@ export default function SchoolHeader() {
           </div>
         </div>
       </Container>
-    </div>
+    </header>
   )
 }
