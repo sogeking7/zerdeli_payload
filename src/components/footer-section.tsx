@@ -70,7 +70,7 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="bg-white w-full py-8 md:py-16 max-md:border-t max-md:border-border max-md:mt-20">
+    <footer className="bg-white w-full py-8 md:py-16 border-t border-gray-100 max-md:mt-20">
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           <div className="flex flex-col gap-8">

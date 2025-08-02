@@ -52,7 +52,7 @@ export default function SchoolHeader() {
       <Container>
         <div className="flex items-center h-full justify-between">
           {/* Logo */}
-          <Link href="/">
+          <Link className="flex-shrink-0" href="/">
             <Image src={'/svg/logo.svg'} width={80} height={50} alt="Zerdeli" />
           </Link>
 

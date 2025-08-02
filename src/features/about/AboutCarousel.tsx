@@ -35,7 +35,7 @@ export default function AboutCarousel() {
   const { setApi, current } = useCarousel()
 
   return (
-    <section id="about">
+    <div>
       <Carousel setApi={setApi}>
         <CarouselContent className="-ml-2 md:-ml-4">
           {aboutBullets.map((i, idx) => (
@@ -57,7 +57,7 @@ export default function AboutCarousel() {
           ))}
         </CarouselContent>
       </Carousel>
-      <div className="mx-auto flex py-6 gap-2 lg:hidden justify-center">
+      <div className="mx-auto flex max-lg:py-6 gap-2 lg:hidden justify-center">
         {aboutBullets.map((_, idx) => (
           <div
             key={idx}
@@ -68,6 +68,6 @@ export default function AboutCarousel() {
           ></div>
         ))}
       </div>
-    </section>
+    </div>
   )
 }
