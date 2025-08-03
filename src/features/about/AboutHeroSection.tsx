@@ -35,7 +35,7 @@ export default function AboutHeroSection() {
                 О Zerdeli <br />
                 International School
               </h1>
-              <p className="px-4 text-lg text-center font-normal sm:text-xl opacity-80 max-w-2xl mx-auto">
+              <p className="text-center font-normal sm:text-xl text-black/80 max-w-2xl mx-auto">
                 ZIS — это международная школа, в которой углубленно преподают математику и логику,
                 английский язык и информатику, а также воспитывают детей прививая национальную
                 идентичность.
