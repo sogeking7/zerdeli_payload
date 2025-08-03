@@ -30,7 +30,7 @@ export default function AboutHeroSection() {
             </BreadcrumbList>
           </Breadcrumb>
           <div>
-            <div className="space-y-6 mt-8 md:mb-[150px] md:mt-[100px]">
+            <div className="space-y-6 mt-8 mb-16 md:mb-[150px] md:mt-[100px]">
               <h1 className="text-4xl font-agenor font-normal text-center sm:text-7xl">
                 О Zerdeli <br />
                 International School
