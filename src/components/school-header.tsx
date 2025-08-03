@@ -85,11 +85,11 @@ export default function SchoolHeader() {
               ) : (
                 <Button
                   key={index}
+                  asChild
                   variant="ghost"
                   className="text-[#000000] hover:bg-gray-50 px-3 py-2 text-sm font-medium"
-                  asChild
                 >
-                  <a href={item.href}>{item.label}</a>
+                  <Link href={item.href}>{item.label}</Link>
                 </Button>
               ),
             )}
@@ -145,14 +145,19 @@ export default function SchoolHeader() {
                       {item.dropdown ? (
                         <>
                           {item.dropdown.map((subItem, subIndex) => (
-                            <Button onClick={() => setOpen(false)} variant="ghost" key={subIndex}>
+                            <Button
+                              asChild
+                              onClick={() => setOpen(false)}
+                              variant="ghost"
+                              key={subIndex}
+                            >
                               <Link href={subItem.href}>{subItem.label}</Link>
                             </Button>
                           ))}
                         </>
                       ) : (
-                        <Button variant="ghost" key={index} onClick={() => setOpen(false)}>
-                          <Link href={item.href}>{item.label}</Link>
+                        <Button asChild variant="ghost" key={index} onClick={() => setOpen(false)}>
+                          <Link href={item.href}>{item.label} </Link>
                         </Button>
                       )}
                     </div>
