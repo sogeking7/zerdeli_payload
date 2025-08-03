@@ -55,7 +55,7 @@ export default function FoodSection() {
               санитарными нормами.
             </p>
           </div>
-          <Tabs defaultValue="account" className="w-full">
+          <Tabs defaultValue="lunch" className="w-full">
             <TabsList className="mx-auto mb-4 md:mb-10">
               <TabsTrigger value="breakfast">Завтрак</TabsTrigger>
               <TabsTrigger value="lunch">Обед</TabsTrigger>
