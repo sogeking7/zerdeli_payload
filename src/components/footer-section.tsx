@@ -74,8 +74,8 @@ export default function Footer() {
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           <div className="flex flex-col gap-8">
-            <Link href="/">
-              <Image src="/logo.png" alt="Zerdeli Logo" width={120} height={69} />
+            <Link className="flex-shrink-0" href="/">
+              <Image src={'/svg/logo.svg'} width={80} height={50} alt="Zerdeli" />
             </Link>
             <div className="space-y-4">
               <p className="text-sm text-black/60">Мы в соц сетях</p>

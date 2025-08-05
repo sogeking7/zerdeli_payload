@@ -30,12 +30,12 @@ export default function AboutHeroSection() {
             </BreadcrumbList>
           </Breadcrumb>
           <div>
-            <div className="space-y-6 mt-8 md:mb-[150px] md:mt-[100px]">
+            <div className="space-y-6 mt-8 mb-16 md:mb-[150px] md:mt-[100px]">
               <h1 className="text-4xl font-agenor font-normal text-center sm:text-7xl">
                 О Zerdeli <br />
                 International School
               </h1>
-              <p className="px-4 text-lg text-center font-normal sm:text-xl opacity-80 max-w-2xl mx-auto">
+              <p className="text-center font-normal sm:text-xl text-black/80 max-w-2xl mx-auto">
                 ZIS — это международная школа, в которой углубленно преподают математику и логику,
                 английский язык и информатику, а также воспитывают детей прививая национальную
                 идентичность.

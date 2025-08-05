@@ -1,3 +1,5 @@
+'use client'
+
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -5,11 +7,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { Drawer, DrawerContent, DrawerTrigger } from '@/components/ui/drawer'
+import { Drawer, DrawerContent, DrawerHeader, DrawerTrigger } from '@/components/ui/drawer'
 import { Menu, ChevronDown, Search } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Container from './custom/Container'
+import { useState } from 'react'
 
 const navItems = [
   {
@@ -47,6 +50,7 @@ const languageOptions = [
 ]
 
 export default function SchoolHeader() {
+  const [open, setOpen] = useState(false)
   return (
     <header className="bg-white fixed top-0 z-20 w-full h-16 border-b border-gray-100">
       <Container>
@@ -81,11 +85,11 @@ export default function SchoolHeader() {
               ) : (
                 <Button
                   key={index}
+                  asChild
                   variant="ghost"
                   className="text-[#000000] hover:bg-gray-50 px-3 py-2 text-sm font-medium"
-                  asChild
                 >
-                  <a href={item.href}>{item.label}</a>
+                  <Link href={item.href}>{item.label}</Link>
                 </Button>
               ),
             )}
@@ -123,45 +127,41 @@ export default function SchoolHeader() {
             </DropdownMenu>
 
             {/* Mobile Menu Trigger */}
-            <Drawer direction="right">
+            <Drawer direction="right" open={open} onOpenChange={setOpen}>
               <DrawerTrigger asChild>
                 <Button variant="ghost" size="icon" className="md:hidden">
                   <Menu strokeWidth={1.5} className="size-5" />
                 </Button>
               </DrawerTrigger>
-              <DrawerContent className="h-full w-4/5 sm:w-1/2 p-6">
-                <nav className="flex flex-col space-y-4">
+              <DrawerContent className="h-full w-4/5 sm:w-1/2 px-4">
+                <DrawerHeader className="h-16 flex items-center justify-center !p-0">
+                  <Link onClick={() => setOpen(false)} className="flex-shrink-0" href="/">
+                    <Image src={'/svg/logo.svg'} width={80} height={50} alt="Zerdeli" />
+                  </Link>
+                </DrawerHeader>
+                <nav className="flex flex-col space-y-4 py-6">
                   {navItems.map((item, index) => (
-                    <div key={index}>
+                    <div key={index} className="flex flex-col">
                       {item.dropdown ? (
-                        <div className="flex flex-col">
-                          <Link href={item.href || ''}>
-                            <span className="text-lg font-semibold text-[#000000] mb-2">
-                              {item.label}
-                            </span>
-                          </Link>
+                        <>
                           {item.dropdown.map((subItem, subIndex) => (
                             <Button
-                              variant="link"
+                              asChild
+                              onClick={() => setOpen(false)}
+                              variant="ghost"
                               key={subIndex}
-                              className="!text-left justify-start"
                             >
                               <Link href={subItem.href}>{subItem.label}</Link>
                             </Button>
                           ))}
-                        </div>
+                        </>
                       ) : (
-                        <Link href={item.href || ''}>
-                          <span className="text-lg font-semibold text-[#000000] mb-2">
-                            {item.label}
-                          </span>
-                        </Link>
+                        <Button asChild variant="ghost" key={index} onClick={() => setOpen(false)}>
+                          <Link href={item.href}>{item.label} </Link>
+                        </Button>
                       )}
                     </div>
                   ))}
-                  <Button variant="link" className="!text-left justify-start">
-                    <Link href="tel:+77077421212">+7 707 742-12-12</Link>
-                  </Button>
                 </nav>
               </DrawerContent>
             </Drawer>
