@@ -1,5 +1,4 @@
 'use client'
-
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -13,6 +12,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Container from './custom/Container'
 import { useState } from 'react'
+
+import { SearchOverlay } from '@/features/search/SearchSection'
 
 const navItems = [
   {
@@ -28,7 +29,7 @@ const navItems = [
     dropdown: [
       { label: 'Требования', href: '#' },
       { label: 'Документы', href: '#' },
-      { label: 'Тестирование', href: '#' },
+      { label: 'Тестирование', href: '/exam-registration' },
     ],
   },
   {
@@ -36,10 +37,10 @@ const navItems = [
     dropdown: [
       { label: 'Расписание', href: '#' },
       { label: 'Оплата', href: '#' },
-      { label: 'Родительский комитет', href: '#' },
+      { label: 'Родительский комитет', href: '/parent-committee' },
     ],
   },
-  { label: 'Новости', href: '#' },
+  { label: 'Новости', href: '/news' },
   { label: 'Контакты', href: '#' },
 ]
 
@@ -50,6 +51,8 @@ const languageOptions = [
 ]
 
 export default function SchoolHeader() {
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  
   const [open, setOpen] = useState(false)
   return (
     <header className="bg-white fixed top-0 z-20 w-full h-16 border-b border-gray-100">
@@ -104,7 +107,12 @@ export default function SchoolHeader() {
             </div>
 
             {/* Search Icon */}
-            <Button variant="ghost" size="icon" className="text-[#000000] hover:bg-gray-50">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="text-[#000000] hover:bg-gray-50"
+              onClick={() => setIsSearchOpen(true)}
+            >
               <Search className="h-5 w-5" />
             </Button>
 
@@ -168,6 +176,12 @@ export default function SchoolHeader() {
           </div>
         </div>
       </Container>
+      
+      {/* Search Overlay */}
+      <SearchOverlay 
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
+      />
     </header>
   )
 }
