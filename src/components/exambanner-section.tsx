@@ -5,7 +5,7 @@ import Link from 'next/link'
 export default function ExamBanner() {
   return (
     <section id="exam-banner">
-      <div className="max-md:px-4">
+      <div className="max-md:px-2">
         <div className="bg-[#c3f1bd] max-md:rounded-2xl">
           <Container>
             <div className="relative flex flex-col md:flex-row items-center justify-between md:h-20 py-10  md:py-0">

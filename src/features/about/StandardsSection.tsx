@@ -15,7 +15,7 @@ export default function StandardsSection() {
           <h2 className="text-center text-2xl mb-10 md:mb-20 md:text-5xl z-10 relative">
             <span>Образовательные</span> <br /> стандарты
           </h2>
-          <div className="max-w-3xl px-4 mx-auto grid grid-cols-2 gap-6 relative z-10 ">
+          <div className="max-w-3xl px-2 mx-auto grid grid-cols-2 gap-6 relative z-10 ">
             <div className="space-y-4 col-span-full p-10 md:col-span-1 bg-white  rounded-xl shadow-sm">
               <h3 className="font-medium text-xl md:text-2xl">Государственный стандарт</h3>
               <p className="md:text-lg font-light">
