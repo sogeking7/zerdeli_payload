@@ -1,230 +1,127 @@
-"use client";
+import React from 'react'
+import Image from 'next/image'
+import Container from '@/components/custom/Container'
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb'
+import MoreNewsCard from '@/features/news/MoreNewsCard'
 
+import { News } from '@/payload-types'
+import { RichText } from '@/components/RichText'
+import { formatDate } from '@/lib/utils'
 
-import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { getPayload } from 'payload'
+import config from '@/payload.config'
 
-// -- Иконка-разделитель для хлебных крошек --
-const BreadcrumbSeparator = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M9 18L15 6" stroke="black" strokeOpacity="0.3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-);
+async function fetchArticle(id: News['id']) {
+  const payloadConfig = await config
+  const payload = await getPayload({ config: payloadConfig })
 
-// -- Компонент для карточки в списке "Еще новости" --
-interface MoreNewsItemProps {
-  id: string;
-  date: string;
-  title: string;
-  snippet: string;
+  const article = await payload.findByID({
+    collection: 'news',
+    id: id,
+  })
+
+  return article
 }
 
-const MoreNewsItem = ({ id, date, title, snippet }: MoreNewsItemProps) => (
-  <Link href={`/news/${id}`} className="block group">
-    <div className="flex flex-col justify-start items-start self-stretch gap-2">
-      <p className="text-sm text-left text-black/60">{date}</p>
-      <div className="flex flex-col justify-start items-start self-stretch gap-4">
-        <p className="self-stretch text-xl font-semibold text-left text-black group-hover:text-[#4aa30a] transition-colors">
-          {title}
-        </p>
-        <p className="self-stretch text-sm text-left text-black/60">
-          {snippet}
-        </p>
-      </div>
-    </div>
-  </Link>
-);
+async function fetchOtherArticles(id: News['id']) {
+  const payloadConfig = await config
+  const payload = await getPayload({ config: payloadConfig })
 
-
-// -- Основной компонент страницы --
-export default function NewsArticlePage() {
-  const params = useParams();
-  const id = params.id as string;
-// Данные для новостных статей
-  const articles = [
-    {
-      id: "1",
-      imageSrc: "/news1.png",
-      date: "03.03.2025",
-      title: "День добрых дел: школьники помогают тем, кто нуждается.",
-      snippet: "Ученики нашей школы приняли участие в благотворительной акции: собрали вещи для детского до...",
-      content: `Ученики нашей школы приняли участие в благотворительной акции: собрали вещи для детского дома.
-    
-    Акция проходила в течение недели, и за это время удалось собрать много нужных вещей: одежду, книги, игрушки и канцелярские принадлежности.
-    
-    Ребята не только приносили вещи, но и писали тёплые письма с пожеланиями для детей. Многие родители тоже присоединились к акции, помогая своим детям выбрать подарки.
-    
-    «Мы очень рады, что смогли помочь. Это важно — делать добрые дела и думать о других», — поделилась одна из учениц. Учителя отметили, что такие акции помогают воспитывать в детях отзывчивость и сострадание.
-    
-    Директор детского дома поблагодарил школьников за помощь и пригласил их на совместное мероприятие, где дети смогут познакомиться и поиграть вместе.`
+  const articles = await payload.find({
+    collection: 'news',
+    where: {
+      id: {
+        not_in: [id],
+      },
     },
-    {
-      id: "2",
-      imageSrc: "/news2.png",
-      date: "03.03.2025",
-      title: "Неделя науки в школе: эксперименты, открытия и новые знания!",
-      snippet: "Ученики участвовали в увлекательных опытах, слушали лекции и даже попробовали себя в роли исследователей...",
-      content: `Ученики участвовали в увлекательных опытах, слушали лекции и даже попробовали себя в роли исследователей.
-    
-    В течение недели в школе проходили различные научные мероприятия: от простых экспериментов до сложных исследовательских проектов. Ученики всех классов смогли найти что-то интересное для себя.
-    
-    Особенно популярными стали химические опыты, где ребята наблюдали за красочными реакциями и создавали собственные составы. На уроках физики строили простые механизмы и изучали законы движения.
-    
-    «Я никогда не думал, что наука может быть такой интересной! Теперь я хочу стать учёным», — поделился один из учеников младших классов. Учителя отметили повышенный интерес к предметам после проведения недели науки.
-    
-    Школа планирует сделать такие мероприятия регулярными, чтобы поддерживать интерес учеников к научным дисциплинам и помогать им раскрывать свой потенциал.`
-    },
-    {
-      id: "3",
-      imageSrc: "/news3.png",
-      date: "03.03.2025",
-      title: "Читаем вместе: в школе прошёл литературный марафон",
-      snippet: "Ученики, учителя и даже родители приняли участие в этом увлекательном событии, посвящённом чтению и обмену впечатлениями о книгах...",
-      content: `Ученики, учителя и даже родители приняли участие в этом увлекательном событии, посвящённом чтению и обмену впечатлениями о книгах.
+    limit: 3,
+    sort: '-publishedDate',
+  })
 
-    Марафон проходил в несколько этапов. Сначала участники выбирали произведения по своему вкусу — кто-то предпочёл классику, другие с головой окунулись в мир фантастики или детективов. 
+  return articles.docs
+}
 
-    В течение недели ребята читали книги, а затем собрались в школьной библиотеке, чтобы обсудить их. Многие делились своими любимыми отрывками, рассказывали о героях и сюжетах, а некоторые даже подготовили театрализованные сцены по мотивам прочитанных произведений.
+export default async function NewsArticlePage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
 
-    «Это было необычно и интересно! Благодаря марафону я наконец-то прочитал книгу, которую давно откладывал», — поделился один из участников. Учителя тоже активно включились в процесс, рассказывая о своих любимых произведениях и советуя ученикам, что стоит прочитать.
-
-    Литературный марафон ещё раз доказал, что чтение — это не скучно, а наоборот, увлекательно и познавательно. Школа планирует сделать этот проект ежегодным, чтобы ещё больше ребят могли открыть для себя удивительный мир книг.`
-    },
-    {
-      id: "4",
-      imageSrc: "/news4.png",
-      date: "03.03.2025",
-      title: "Спортивный день: соревнования, дружба и победы!",
-      snippet: "Наши ученики соревновались в различных видах спорта, демонстрируя командный дух и волю к победе...",
-      content: `Наши ученики соревновались в различных видах спорта, демонстрируя командный дух и волю к победе.
-    
-    В этот день школьный двор превратился в настоящий спортивный комплекс: были организованы площадки для футбола, баскетбола, волейбола и лёгкой атлетики. Ученики всех классов приняли участие в соревнованиях, поддерживая друг друга и стремясь к победе.
-    
-    Особенно зрелищными стали эстафеты, где команды демонстрировали не только скорость, но и слаженность действий. Родители пришли поддержать своих детей и даже приняли участие в некоторых конкурсах.
-    
-    «Спортивный день — это всегда здорово! Мы не только соревнуемся, но и учимся работать в команде», — поделился капитан одной из команд. Учителя физкультуры отметили, что такие мероприятия помогают детям полюбить спорт и вести активный образ жизни.
-    
-    После соревнований все участники получили памятные медали, а победители — кубки и грамоты. Школа планирует проводить спортивные дни каждый сезон, чтобы поддерживать интерес учеников к физической активности.`
-    },
-    {
-      id: "5",
-      imageSrc: "/news5.png",
-      date: "03.03.2025",
-      title: "Концерт талантов: музыка, танцы и театральные постановки",
-      snippet: "На сцене школы выступили самые талантливые ученики, подарив зрителям незабываемый вечер...",
-      content: `На сцене школы выступили самые талантливые ученики, подарив зрителям незабываемый вечер.
-    
-    Концерт был организован силами учеников и учителей. В программе были музыкальные номера, танцевальные выступления и даже небольшие театральные постановки. Ребята долго готовились, репетировали после уроков и создавали костюмы.
-    
-    Особенно тепло зрители встретили хоровое выступление младших классов и танцевальный номер старшеклассников. Некоторые ученики впервые вышли на сцену, преодолев свой страх и неуверенность.
-    
-    «Я очень волновалась перед выступлением, но когда услышала аплодисменты, поняла, что всё было не зря», — поделилась одна из участниц. Учителя отметили, что такие мероприятия помогают детям раскрыть свои таланты и повысить самооценку.
-    
-    После концерта директор школы поблагодарил всех участников и объявил, что теперь такие концерты будут проводиться каждый семестр, чтобы у всех желающих была возможность показать свои таланты.`
-    },
-    {
-      id: "6",
-      imageSrc: "/news6.png",
-      date: "03.03.2025",
-      title: "Экологическая акция: ученики ZIS за чистый город",
-      snippet: "В рамках акции были высажены деревья и убраны территории парков, внося вклад в сохранение природы...",
-      content: `В рамках акции были высажены деревья и убраны территории парков, внося вклад в сохранение природы.
-    
-    Ученики всех классов приняли участие в экологической акции, организованной совместно с городским парком. Ребята разделились на группы: одни занимались уборкой территории, другие высаживали молодые деревья и кустарники.
-    
-    За один день удалось собрать несколько десятков мешков мусора и высадить более 50 саженцев. Специалисты из экологического центра провели для школьников интересную лекцию о важности сохранения природы и правильной утилизации отходов.
-    
-    «Мы хотим, чтобы наш город был чистым и зелёным. Каждый может внести свой вклад в защиту окружающей среды», — рассказал один из организаторов акции. Учителя отметили, что такие мероприятия помогают воспитывать в детях ответственное отношение к природе.
-    
-    Городская администрация поблагодарила школьников за инициативу и предложила сделать экологические акции регулярными, привлекая к участию и другие школы города.`
-    }
-  ];
-
-  const article = articles.find(article => article.id === id);
-  // Фильтруем другие статьи, чтобы показать в боковой колонке (до 3 штук)
-  const otherArticles = articles.filter(article => article.id !== id).slice(0, 3);
+  const article = await fetchArticle(+id)
+  const otherArticles = await fetchOtherArticles(+id)
 
   if (!article) {
-    return <div className="container mx-auto px-4 py-16">Статья не найдена</div>;
+    return <div className="container mx-auto px-4 py-16">Статья не найдена</div>
   }
 
   return (
-    <section className="bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Блок с хлебными крошками */}
-        <div className="pt-6 mb-16">
-          <div className="flex items-center text-sm text-black/60">
-            <Link href="/" className="hover:text-black transition-colors">Главная</Link>
-            <BreadcrumbSeparator />
-            <Link href="/news" className="hover:text-black transition-colors">Новости</Link>
-            <BreadcrumbSeparator />
-            <span className="font-medium text-black truncate max-w-xs sm:max-w-md">{article.title}</span>
-          </div>
-        </div>
+    <>
+      <section id={`news-article-${id}`}>
+        <Container>
+          <div className="pt-16">
+            <Breadcrumb className="pt-6 ">
+              <BreadcrumbList>
+                <BreadcrumbItem>
+                  <BreadcrumbLink href="/">Главная</BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbLink href="/news">Новости</BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbPage>{article.title}</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
+            <div className="mt-8 md:mt-10 flex flex-col lg:flex-row gap-16">
+              <div className="w-full lg:w-2/3">
+                <div className="flex flex-col justify-start items-start w-full relative gap-10">
+                  <div className="relative w-full h-[300px] md:h-[460px] rounded-2xl overflow-hidden block">
+                    <Image
+                      src={`https://drive.google.com/thumbnail?id=${article.googleDriveImageId}&sz=w640-h480`}
+                      alt={article.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="flex flex-col justify-start items-start self-stretch relative gap-6">
+                    <p className="self-stretch text-sm text-left text-black/60">
+                      {formatDate(article.publishedDate)}
+                    </p>
+                    <div className="flex flex-col justify-start items-start self-stretch relative gap-8">
+                      <h1 className="self-stretch text-4xl font-semibold text-left text-black">
+                        {article.title}
+                      </h1>
+                      <div className="prose md:prose-lg text-black">
+                        {article.content && <RichText data={article.content} />}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-        {/* Основной контент страницы: Статья + Другие новости */}
-        <div className="flex flex-col lg:flex-row gap-16">
-
-          {/* Левая колонка: Детальная страница новости */}
-          <div className="w-full lg:w-2/3">
-            <div className="flex flex-col justify-start items-start w-full relative gap-10">
-              <a
-                href={article.imageSrc}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative w-full h-[460px] rounded-2xl overflow-hidden block"
-              >
-                <Image
-                  src={article.imageSrc}
-                  alt={article.title}
-                  layout="fill"
-                  objectFit="cover"
-                  className="hover:opacity-80 transition"
-                />
-              </a>
-              <div className="flex flex-col justify-start items-start self-stretch relative gap-6">
-                <p className="self-stretch text-sm text-left text-black/60">
-                  {article.date}
-                </p>
-                <div className="flex flex-col justify-start items-start self-stretch relative gap-8">
-                  <h1 className="self-stretch text-[40px] font-semibold text-left text-black">
-                    {article.title}
-                  </h1>
-                  <div className="prose lg:prose-lg max-w-none text-black text-lg space-y-4">
-                    {article.content.split(/\n+/).map((paragraph, index) => (
-                      <p key={index}>{paragraph.trim()}</p>
+              <div className="w-full lg:w-1/3">
+                <div className="flex flex-col justify-start items-start w-full relative gap-10">
+                  <h2 className="self-stretch text-xl text-left text-black font-semibold">
+                    Еще новости
+                  </h2>
+                  <div className="flex flex-col justify-start items-start self-stretch gap-8">
+                    {otherArticles.map((otherArticle) => (
+                      <MoreNewsCard key={otherArticle.id} news={otherArticle} />
                     ))}
                   </div>
-
                 </div>
               </div>
             </div>
           </div>
-
-
-          {/* Правая колонка: Еще новости */}
-            <div className="w-full lg:w-1/3">
-              <div className="flex flex-col justify-start items-start w-full relative gap-10">
-                <p className="self-stretch text-xl text-left text-black font-semibold">
-                  Еще новости
-                </p>
-                <div className="flex flex-col justify-start items-start self-stretch gap-8">
-                  {otherArticles.map(otherArticle => (
-                    <MoreNewsItem
-                      key={otherArticle.id}
-                      id={otherArticle.id}
-                      date={otherArticle.date}
-                      title={otherArticle.title}
-                      snippet={otherArticle.snippet}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+        </Container>
+      </section>
+      <div></div>
+    </>
+  )
 }
