@@ -1,19 +1,8 @@
 import LifeAtZisCarousel from '@/features/main/LifeAtZisCarousel'
-import config from '@payload-config'
-import { getPayload } from 'payload'
+import getNews from '@/api/getNews'
 
 export default async function LifeAtZisWrapper() {
-  const payloadConfig = await config
-  const payload = await getPayload({ config: payloadConfig })
-  const limit = 6
-
-  const news = await payload.find({
-    collection: 'news',
-    sort: '-publishedDate',
-    limit,
-    page: 1,
-  })
-
+  const news = await getNews(1, 6)
   return (
     <>
       <LifeAtZisCarousel news={news.docs} />

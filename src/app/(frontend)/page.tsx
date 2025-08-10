@@ -5,6 +5,8 @@ import AdditionSections from '@/features/main/AdditionSection'
 import HeroSection from '@/features/main/HeroSection'
 import NumbersSection from '@/features/main/NumbersSection'
 import LifeAtZisWrapper from '@/features/main/LifeAtZisWrapper'
+import { Suspense } from 'react'
+import NewsListSkeleton from '@/features/news/NewsListSkeletons'
 
 export default async function HomePage() {
   return (
@@ -13,7 +15,9 @@ export default async function HomePage() {
       <WhyZerdeliCarousel />
       <NumbersSection />
       <AdditionSections />
-      <LifeAtZisWrapper />
+      <Suspense fallback={<NewsListSkeleton length={3} />}>
+        <LifeAtZisWrapper />
+      </Suspense>
       <FaqSection />
       <ExamBanner />
     </>
