@@ -7,59 +7,47 @@ import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carouse
 import { cn } from '@/lib/utils'
 import useCarousel from '@/hooks/useCarousel'
 import useMediaQuery from '@/hooks/useMediaQuery'
+import { useTranslations } from 'next-intl'
 
-const breakfast = [
-  {
-    title: 'Пельмени',
-    img: '/foods/lunch/1.webp',
-  },
+const breakfastImgs = ['/about/foods/lunch/1.webp']
+const lunchImgs = [
+  '/about/foods/lunch/1.webp',
+  '/about/foods/lunch/2.webp',
+  '/about/foods/lunch/3.webp',
+  '/about/foods/lunch/4.webp',
+  '/about/foods/lunch/5.webp',
 ]
-const lunch = [
-  {
-    title: 'Пельмени',
-    img: '/foods/lunch/1.webp',
-  },
-  {
-    title: 'Гречневая каша',
-    img: '/foods/lunch/2.webp',
-  },
-  {
-    title: 'Cірне',
-    img: '/foods/lunch/3.webp',
-  },
-  {
-    title: 'Плов',
-    img: '/foods/lunch/4.webp',
-  },
-  {
-    title: 'Суп сорпа',
-    img: '/foods/lunch/5.webp',
-  },
-]
-const snack = [
-  {
-    title: 'Пельмени',
-    img: '/foods/lunch/1.webp',
-  },
-]
+const snackImgs = ['/about/foods/lunch/1.webp']
 
 export default function FoodSection() {
+  const t = useTranslations('AboutPage')
+
+  const breakfast = breakfastImgs.map((img, idx) => ({
+    img,
+    title: t(`foods.items.breakfast.${idx}`),
+  }))
+  const lunch = lunchImgs.map((img, idx) => ({
+    img,
+    title: t(`foods.items.lunch.${idx}`),
+  }))
+  const snack = snackImgs.map((img, idx) => ({
+    img,
+    title: t(`foods.items.snack.${idx}`),
+  }))
+
   return (
     <section id="foods">
       <Container>
         <div className="space-y-8 md:space-y-16">
           <div>
-            <h2 className="text-center text-2xl mb-6 md:text-5xl">Качество питания</h2>
-            <p className="font-light mx-auto max-w-3xl text-center">
-              Блюда готовятся с учетом возрастных особенностей ребенка и в соответствии со всеми
-              санитарными нормами.
-            </p>
+            <h2 className="text-center text-2xl mb-6 md:text-5xl">{t('foods.title')}</h2>
+            <p className="font-light mx-auto max-w-3xl text-center">{t('foods.description')}</p>
           </div>
           <Tabs defaultValue="lunch" className="w-full">
             <TabsList className="mx-auto mb-4 md:mb-10">
-              <TabsTrigger value="breakfast">Завтрак</TabsTrigger>
-              <TabsTrigger value="lunch">Обед</TabsTrigger>
-              <TabsTrigger value="snack">Перекус</TabsTrigger>
+              <TabsTrigger value="breakfast">{t('foods.tabs.breakfast')}</TabsTrigger>
+              <TabsTrigger value="lunch">{t('foods.tabs.lunch')}</TabsTrigger>
+              <TabsTrigger value="snack">{t('foods.tabs.snack')}</TabsTrigger>
             </TabsList>
             <TabsContent value="breakfast" className="w-full">
               <Foods foods={breakfast} />

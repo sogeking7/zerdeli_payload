@@ -1,0 +1,261 @@
+{
+  "HomePage": {
+    "title": "From knowledge\n to achievement",
+    "heroSubtitle": "A school that opens up opportunities",
+    "heroTagline": "We provide in-depth education in mathematics, logic, English and information technology",
+    "why": {
+      "heading": "Why Zerdeli?",
+      "reviews": [
+        {
+          "title": "Transparent system, quality control",
+          "description": "Monthly assessment and quality control system"
+        },
+        {
+          "title": "The best teachers are the key to quality education",
+          "description": "Bolashak scholars"
+        },
+        {
+          "title": "Be the best, win the grant!",
+          "description": "Motivation system for top students"
+        },
+        {
+          "title": "Proprietary curriculum and books",
+          "description": "Advanced mathematics, in-depth logic"
+        }
+      ]
+    },
+    "numbers": {
+      "schools": "Schools across the country",
+      "centers": "Learning centers",
+      "students": "Students enrolled"
+    },
+    "additions": {
+      "headingTop": "Extracurricular activities",
+      "headingBottom": "for your child’s development",
+      "items": [
+        "Relax time",
+        "Robotics",
+        "Dombra",
+        "Chess",
+        "Dancing",
+        "Karate",
+        "Public speaking",
+        "Toguz Kumalak",
+        "Reading",
+        "Speaking Club"
+      ]
+    },
+    "life": {
+      "heading": "Life at ZIS",
+      "subheading": "News, announcements, events",
+      "allNewsButton": "All news",
+      "news": [
+        {
+          "description": "17 classes took part in the charity fair held during the first week of Ramadan."
+        },
+        {
+          "description": "17 classes took part in the charity fair held during the first week of Ramadan."
+        }
+      ]
+    },
+    "faq": {
+      "headingTop": "Frequently asked",
+      "headingBottom": "questions",
+      "items": [
+        {
+          "q": "What time are the classes held?",
+          "a": "Classes start at 8:45 AM and finish at 5:00 PM."
+        },
+        {
+          "q": "What are the teachers’ qualifications? Can they provide quality education?",
+          "a": "All our teachers have the highest qualification category and many years of experience. We carefully select the best specialists to ensure high quality education."
+        },
+        {
+          "q": "What is the quality of school meals?",
+          "a": "We offer a balanced three-meal plan developed together with nutritionists. All dishes are prepared in our own kitchen from fresh, quality products."
+        },
+        {
+          "q": "Is there a guarantee of education quality? How soon will a student show progress?",
+          "a": "We guarantee an individual approach to each student. Progress depends on many factors, but the first results are usually noticeable within 2-3 months of regular classes."
+        },
+        {
+          "q": "What sets you apart from other schools?",
+          "a": "Our key difference is in-depth study of IT disciplines, project-based learning and the development of soft skills, preparing students for the professions of the future."
+        }
+      ]
+    },
+    "examBanner": {
+      "title": "Entrance exam to Zerdeli school",
+      "description": "Sign up for the exam. Our manager will contact you.",
+      "cta": "Register for exams"
+    }
+  },
+  "Header": {
+    "nav": {
+      "about": {
+        "label": "About",
+        "dropdown": {
+          "about": "About"
+        }
+      },
+      "admission": {
+        "label": "Admission",
+        "dropdown": {
+          "requirements": "Requirements",
+          "documents": "Documents",
+          "testing": "Testing"
+        }
+      },
+      "parents": {
+        "label": "For Parents",
+        "dropdown": {
+          "schedule": "Schedule",
+          "payment": "Payment",
+          "parentCommittee": "Parent committee"
+        }
+      },
+      "news": "News",
+      "contacts": "Contacts"
+    },
+    "callCenter": "Call center"
+  },
+  "Footer": {
+    "columns": {
+      "aboutZIS": {
+        "title": "About ZIS",
+        "links": {
+          "about": "About",
+          "teachers": "Teachers",
+          "corporateGovernance": "Corporate governance",
+          "programs": "Educational programs",
+          "license": "License",
+          "charity": "Charity"
+        }
+      },
+      "admission": {
+        "title": "Admission",
+        "links": {
+          "admissionRules": "Admission rules",
+          "enrollmentDocs": "Enrollment documents",
+          "documentsSchedule": "Documents schedule",
+          "schoolTransfer": "School transfer",
+          "benefits": "Benefits and special conditions"
+        }
+      },
+      "parents": {
+        "title": "For Parents",
+        "links": {
+          "parentCommittee": "Parent committee",
+          "eDiary": "Electronic diary",
+          "accessibility": "Accessibility conditions",
+          "safety": "Safety",
+          "admission": "Admission"
+        }
+      }
+    },
+    "socialTitle": "We are on social media",
+    "contactsTitle": "Contacts"
+  },
+  "AboutPage": {
+    "breadcrumb": {
+      "home": "Home",
+      "about": "About"
+    },
+    "hero": {
+      "titleTop": "About Zerdeli",
+      "titleBottom": "International School",
+      "description": "ZIS is an international school offering in-depth studies of mathematics and logic, English, and computer science, while nurturing students with a strong national identity."
+    },
+    "aboutCarousel": {
+      "bullets": [
+        { "title": "Mathematics and logic", "description": "We teach to think, count and solve non-standard problems." },
+        { "title": "IT and robotics", "description": "We develop engineering thinking through technology." },
+        { "title": "English language", "description": "Improving reading and speaking skills." },
+        { "title": "Natural science", "description": "We dive into science by exploring the environment." }
+      ]
+    },
+    "mission": {
+      "title": "Zerdeli Mission",
+      "text": "To shape a bright-minded child capable of mastering modern science and technology, conducting independent research, fluent in English, with national values, and ready to serve the country in the future."
+    },
+    "achievements": {
+      "title": "Achievements and opportunities",
+      "description": "We create a space for growth and development by combining experienced teachers, innovative approaches, and modern educational standards so that every student can unlock their potential and succeed in the future.",
+      "numbers": {
+        "students": "Students enrolled",
+        "teachers": "Qualified teachers",
+        "schools": "Schools across the country",
+        "centers": "Learning centers"
+      }
+    },
+    "standards": {
+      "headingTop": "Educational",
+      "headingBottom": "standards",
+      "left": {
+        "title": "State standard",
+        "subtitle": "Requirements for core educational programs",
+        "list": [
+          "Mathematics 3-4 hrs",
+          "English 3-4 hrs",
+          "Paid classes"
+        ]
+      },
+      "badge": "Renowned nationwide education system and olympiads",
+      "right": {
+        "title": "Zerdeli standard",
+        "list": [
+          "Math-logic 8 hrs",
+          "English 8 hrs",
+          "Dombra and chess classes",
+          "Relax time / reading",
+          "Three meals a day",
+          "Robotics",
+          "Zerdeli and debate clubs",
+          "No heavy school bags",
+          "Zerdeli family"
+        ]
+      }
+    },
+    "zerdeliPoint": {
+      "title": "Zerdeli Point",
+      "subtitle": "Motivation program for top students",
+      "bullets": {
+        "bestStudents": "For the best\nstudents",
+        "activeStudents": "For active\nstudents",
+        "progressStudents": "For students who show\nprogress",
+        "homeworkStudents": "For those who do\nhomework"
+      }
+    },
+    "foods": {
+      "title": "Food quality",
+      "description": "Meals are prepared according to the child’s age-specific needs and in compliance with all sanitary standards.",
+      "tabs": {
+        "breakfast": "Breakfast",
+        "lunch": "Lunch",
+        "snack": "Snack"
+      },
+      "items": {
+        "breakfast": ["Dumplings"],
+        "lunch": ["Dumplings", "Buckwheat porridge", "Sirne", "Pilaf", "Soup sorpa"],
+        "snack": ["Dumplings"]
+      }
+    }
+  },
+  "NewsPage": {
+    "breadcrumb": {
+      "home": "Home",
+      "news": "News"
+    },
+    "listPage": {
+      "title": "News, announcements, events"
+    },
+    "buttons": {
+      "loadMore": "More news",
+      "loading": "Loading..."
+    },
+    "article": {
+      "otherNews": "More news",
+      "notFound": "Article not found"
+    }
+  }
+}

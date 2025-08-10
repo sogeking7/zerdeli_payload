@@ -4,6 +4,7 @@ import React from 'react'
 import { Button } from '@/components/ui/button'
 import NewsCard from '@/features/news/NewsCard'
 import type { News } from '@/payload-types'
+import { useTranslations } from 'next-intl'
 
 type Props = {
   initialDocs: News[]
@@ -29,6 +30,7 @@ export default function NewsLoadMore({
   const [page, setPage] = React.useState<number>(initialPage)
   const [loading, setLoading] = React.useState(false)
   const [error, setError] = React.useState<string | null>(null)
+  const t = useTranslations('NewsPage')
 
   const allLoaded = items.length >= total
 
@@ -64,7 +66,7 @@ export default function NewsLoadMore({
             onClick={onLoadMore}
             disabled={loading}
           >
-            {loading ? 'Загрузка...' : 'Еще новости'}
+            {loading ? t('buttons.loading') : t('buttons.loadMore')}
           </Button>
         </div>
       )}

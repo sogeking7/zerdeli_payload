@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import Image from 'next/image'
 
 import Container from './custom/Container'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 
 interface FooterLinksColumnProps {
   title: string
@@ -25,40 +26,45 @@ const FooterLinksColumn = ({ title, links }: FooterLinksColumnProps) => (
 // -- Основной компонент футера --
 
 export default function Footer() {
+  const t = useTranslations('Footer')
+
   // Данные для колонок ссылок
-  const linkColumns = [
-    {
-      title: 'О школе ZIS',
-      links: [
-        { text: 'О школе', href: '#' },
-        { text: 'Преподаватели', href: '#' },
-        { text: 'Корп. управление', href: '#' },
-        { text: 'Образовательные программы', href: '#' },
-        { text: 'Лицензия', href: '#' },
-        { text: 'Благотворительность', href: '#' },
-      ],
-    },
-    {
-      title: 'Поступление',
-      links: [
-        { text: 'Правила приема', href: '#' },
-        { text: 'Документы для зачисления', href: '#' },
-        { text: 'График приема документов', href: '#' },
-        { text: 'Перевод в школу', href: '#' },
-        { text: 'Льготы и особые условия', href: '#' },
-      ],
-    },
-    {
-      title: 'Родителям',
-      links: [
-        { text: 'Родительский комитет', href: '#' },
-        { text: 'Электронный дневник', href: '#' },
-        { text: 'Условия доступности', href: '#' },
-        { text: 'Безопасность', href: '#' },
-        { text: 'Поступление', href: '#' },
-      ],
-    },
-  ]
+  const linkColumns = useMemo(
+    () => [
+      {
+        title: t('columns.aboutZIS.title'),
+        links: [
+          { text: t('columns.aboutZIS.links.about'), href: '#' },
+          { text: t('columns.aboutZIS.links.teachers'), href: '#' },
+          { text: t('columns.aboutZIS.links.corporateGovernance'), href: '#' },
+          { text: t('columns.aboutZIS.links.programs'), href: '#' },
+          { text: t('columns.aboutZIS.links.license'), href: '#' },
+          { text: t('columns.aboutZIS.links.charity'), href: '#' },
+        ],
+      },
+      {
+        title: t('columns.admission.title'),
+        links: [
+          { text: t('columns.admission.links.admissionRules'), href: '#' },
+          { text: t('columns.admission.links.enrollmentDocs'), href: '#' },
+          { text: t('columns.admission.links.documentsSchedule'), href: '#' },
+          { text: t('columns.admission.links.schoolTransfer'), href: '#' },
+          { text: t('columns.admission.links.benefits'), href: '#' },
+        ],
+      },
+      {
+        title: t('columns.parents.title'),
+        links: [
+          { text: t('columns.parents.links.parentCommittee'), href: '#' },
+          { text: t('columns.parents.links.eDiary'), href: '#' },
+          { text: t('columns.parents.links.accessibility'), href: '#' },
+          { text: t('columns.parents.links.safety'), href: '#' },
+          { text: t('columns.parents.links.admission'), href: '#' },
+        ],
+      },
+    ],
+    [t],
+  )
 
   // Данные для контактов
   const contacts = [
@@ -78,7 +84,7 @@ export default function Footer() {
               <Image src={'/svg/logo.svg'} width={80} height={50} alt="Zerdeli" />
             </Link>
             <div className="space-y-4">
-              <p className="text-sm text-black/60">Мы в соц сетях</p>
+              <p className="text-sm text-black/60">{t('socialTitle')}</p>
               <div className="flex gap-6">
                 <Link href="#" aria-label="Whatsapp">
                   <Image alt="whatsapp" src="/svg/whatsapp.svg" width={20} height={20} />
@@ -104,7 +110,7 @@ export default function Footer() {
         {/* Нижняя часть с контактами */}
         <div className="border-t border-black/10 mt-8 pt-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-            <p className="text-xl font-semibold text-left text-black col-span-1">Контакты</p>
+            <p className="text-xl font-semibold text-left text-black col-span-1">{t('contactsTitle')}</p>
             {contacts.map((contact, index) => (
               <div key={index} className="flex flex-col gap-2">
                 <p className="text-sm font-semibold text-black/80">{contact.city}</p>

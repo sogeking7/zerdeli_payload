@@ -7,52 +7,27 @@ import {
   CarouselContent,
   CarouselItem,
 } from '@/components/ui/carousel'
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
 import { cn } from '@/lib/utils'
-import Review1 from '@/../public/review-1.webp'
-import Review2 from '@/../public/review-2.webp'
-import Review3 from '@/../public/review-3.webp'
-import Review4 from '@/../public/review-4.webp'
 import Container from '@/components/custom/Container'
 import useCarousel from '@/hooks/useCarousel'
+import { useTranslations } from 'next-intl'
 
-interface Review {
-  title: string
-  img: StaticImageData
-  description: string
-}
-const reviews: Review[] = [
-  {
-    img: Review1,
-    title: 'Прозрачная система, контроль качества ',
-    description: 'Система ежемесячной оценки и контроля качества',
-  },
-  {
-    img: Review2,
-    title: 'Лучшие учителя — ключ к качественному образованию',
-    description: 'Выпускники Болашак',
-  },
-  {
-    img: Review3,
-    title: 'Be the best, win the grant!',
-    description: 'Система мотивации лучших учеников',
-  },
-  {
-    img: Review4,
-    title: 'Авторская программа и книги',
-    description: 'Сильная математика, углубленная  логика',
-  },
+const reviews = [
+  { img: '/main/reviews/review-1.webp' },
+  { img: '/main/reviews/review-2.webp' },
+  { img: '/main/reviews/review-3.webp' },
+  { img: '/main/reviews/review-4.webp' },
 ] as const
 
 export default function WhyZerdeliCarousel() {
   const { setApi, current } = useCarousel()
+  const t = useTranslations('HomePage')
 
   return (
     <section id="why-zis">
       <Container>
-        <h2 className="mb-6 max-md:text-left text-2xl md:text-5xl">
-          Почему <span>Zerdeli</span>?
-        </h2>
+        <h2 className="mb-6 max-md:text-left text-2xl md:text-5xl">{t('why.heading')}</h2>
         <Carousel setApi={setApi} className="relative">
           <CarouselContent className="-ml-2 md:-ml-4">
             {reviews.map((i, idx) => (
@@ -65,8 +40,10 @@ export default function WhyZerdeliCarousel() {
                     className="rounded-2xl"
                     height={300}
                   />
-                  <h3 className="text-black w-full font-normal">{i.title}</h3>
-                  <p className=" text-black/60 w-full text-sm">{i.description}</p>
+                  <h3 className="text-black w-full font-normal">{t(`why.reviews.${idx}.title`)}</h3>
+                  <p className=" text-black/60 w-full text-sm">
+                    {t(`why.reviews.${idx}.description`)}
+                  </p>
                 </div>
               </CarouselItem>
             ))}

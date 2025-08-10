@@ -1,18 +1,19 @@
-'use client'
-
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
+import { withLineBreaks } from '@/lib/WithLineBreaks'
 
 export default function HeroSection() {
+  const t = useTranslations('HomePage')
+
   return (
     <section id="hero">
       <div className="relative items-center pt-16 flex z-0 flex-col min-h-screen bg-white">
         <div className="space-y-6 mt-8 md:my-[200px]">
           <h1 className="text-4xl font-agenor font-normal text-center sm:text-7xl">
-            От знаний
-            <br />к достижениям
+            {withLineBreaks(t('title'))}
           </h1>
           <p className="px-4 text-lg text-center font-normal sm:text-xl opacity-80">
-            Школа, которая открывает перспективы
+            {t('heroSubtitle')}
           </p>
         </div>
 
@@ -20,7 +21,7 @@ export default function HeroSection() {
           <Image src="/svg/sun.svg" width={45} height={45} alt="sun" />
 
           <p className="text-base text-center lg:text-lg  opacity-70">
-            Углубленно обучаем математике, логике, английскому языку и информационным технологиям
+            {t('heroTagline')}
           </p>
         </div>
         <Image

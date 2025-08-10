@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
+import { useTranslations } from 'next-intl'
 
 interface SectionCardProps {
   icon: string
@@ -19,26 +20,23 @@ function SectionCard({ icon, title }: SectionCardProps) {
 }
 
 export default function AdditionSections() {
-  const sectionsData = [
-    { id: 1, title: 'Relax time', icon: '/relax-time.svg' },
-    { id: 2, title: 'Робототехника', icon: '/robotics.svg' },
-    { id: 3, title: 'Домбра', icon: '/dombyra.svg' },
-    { id: 4, title: 'Шахмат', icon: '/chess.svg' },
-    { id: 5, title: 'Танцы', icon: '/dancing.svg' },
-    { id: 6, title: 'Каратэ', icon: '/karate.svg' },
-    {
-      id: 7,
-      title: 'Ораторское искусство',
-      icon: '/oratorskoe.svg',
-    },
-    { id: 8, title: 'Тогыз Кумалак', icon: '/togyz-qumalaq.svg' },
-    { id: 9, title: 'Чтение книг', icon: '/reading.svg' },
-    { id: 10, title: 'Speaking Club', icon: '/speaking.svg' },
+  const t = useTranslations('HomePage')
+  const sectionsIcons = [
+    '/relax-time.svg',
+    '/robotics.svg',
+    '/dombyra.svg',
+    '/chess.svg',
+    '/dancing.svg',
+    '/karate.svg',
+    '/oratorskoe.svg',
+    '/togyz-qumalaq.svg',
+    '/reading.svg',
+    '/speaking.svg',
   ]
 
   // Разделяем массив на две части для двух рядов
-  const row1Data = sectionsData.slice(0, Math.ceil(sectionsData.length / 2))
-  const row2Data = sectionsData.slice(Math.ceil(sectionsData.length / 2))
+  const row1Data = sectionsIcons.slice(0, Math.ceil(sectionsIcons.length / 2))
+  const row2Data = sectionsIcons.slice(Math.ceil(sectionsIcons.length / 2))
 
   // Дублируем каждый ряд для бесшовной анимации
   const extendedRow1 = [...row1Data, ...row1Data]
@@ -48,15 +46,15 @@ export default function AdditionSections() {
     <section id="additional">
       <div className="flex flex-col items-center w-full overflow-hidden">
         <h2 className="text-2xl md:text-4xl text-center text-black mb-10">
-          <span>Дополнительные занятия</span> <br /> для развития ребенка
+          <span>{t('additions.headingTop')}</span> <br /> {t('additions.headingBottom')}
         </h2>
 
         {/* Первый ряд, движется вправо */}
         <div className="marquee-container w-full mb-4 md:mb-6">
           <div className="flex animate-marquee-reverse ">
-            {extendedRow1.map((section, index) => (
+            {extendedRow1.map((icon, index) => (
               <div key={`row1-${index}`} className="mx-2 md:mx-3">
-                <SectionCard title={section.title} icon={section.icon} />
+                <SectionCard title={t(`additions.items.${index}`)} icon={icon} />
               </div>
             ))}
           </div>
@@ -65,11 +63,14 @@ export default function AdditionSections() {
         {/* Второй ряд, движется влево */}
         <div className="marquee-container w-full">
           <div className="flex animate-marquee">
-            {extendedRow2.map((section, index) => (
-              <div key={`row2-${index}`} className="mx-2 md:mx-3">
-                <SectionCard title={section.title} icon={section.icon} />
-              </div>
-            ))}
+            {extendedRow2.map((icon, index) => {
+              const itemIndex = (index % row2Data.length) + row1Data.length
+              return (
+                <div key={`row2-${index}`} className="mx-2 md:mx-3">
+                  <SectionCard title={t(`additions.items.${itemIndex}`)} icon={icon} />
+                </div>
+              )
+            })}
           </div>
         </div>
       </div>

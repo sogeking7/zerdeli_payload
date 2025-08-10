@@ -17,6 +17,7 @@ import { formatDate } from '@/lib/utils'
 
 import { getPayload } from 'payload'
 import config from '@/payload.config'
+import { getTranslations } from 'next-intl/server'
 
 async function fetchArticle(id: News['id']) {
   const payloadConfig = await config
@@ -53,9 +54,10 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ id
 
   const article = await fetchArticle(+id)
   const otherArticles = await fetchOtherArticles(+id)
+  const t = await getTranslations('NewsPage')
 
   if (!article) {
-    return <div className="container mx-auto px-4 py-16">Статья не найдена</div>
+    return <div className="container mx-auto px-4 py-16">{t('article.notFound')}</div>
   }
 
   return (
@@ -66,11 +68,11 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ id
             <Breadcrumb className="pt-6 ">
               <BreadcrumbList>
                 <BreadcrumbItem>
-                  <BreadcrumbLink href="/">Главная</BreadcrumbLink>
+                  <BreadcrumbLink href="/">{t('breadcrumb.home')}</BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
-                  <BreadcrumbLink href="/news">Новости</BreadcrumbLink>
+                  <BreadcrumbLink href="/news">{t('breadcrumb.news')}</BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
@@ -108,7 +110,7 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ id
               <div className="w-full lg:w-1/3">
                 <div className="flex flex-col justify-start items-start w-full relative gap-10">
                   <h2 className="self-stretch text-xl text-left text-black font-semibold">
-                    Еще новости
+                    {t('article.otherNews')}
                   </h2>
                   <div className="flex flex-col justify-start items-start self-stretch gap-8">
                     {otherArticles.map((otherArticle) => (

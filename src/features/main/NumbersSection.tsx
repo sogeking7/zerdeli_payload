@@ -1,7 +1,9 @@
 import Container from '@/components/custom/Container'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 
 export default function NumbersSection() {
+  const t = useTranslations('HomePage')
   return (
     <section id="numbers">
       <Container className="max-md:!p-0">
@@ -10,15 +12,15 @@ export default function NumbersSection() {
             <div className="grid grid-cols-2 gap-6 md:gap-10">
               <div className="col-span-1">
                 <p className="text-black/80 text-5xl md:text-6xl font-semibold mb-4">5</p>
-                <p className="text-black/60 md:text-lg font-normal">Школ по всей республике</p>
+                <p className="text-black/60 md:text-lg font-normal">{t('numbers.schools')}</p>
               </div>
               <div className="col-span-1">
                 <p className="text-black/80 text-5xl md:text-6xl font-semibold mb-4">25</p>
-                <p className="text-black/60 md:text-lg font-normal">Образовательных центров</p>
+                <p className="text-black/60 md:text-lg font-normal">{t('numbers.centers')}</p>
               </div>
               <div className="col-span-2">
                 <p className="text-black/80 text-5xl md:text-6xl font-semibold mb-4">15 000 +</p>
-                <p className="text-black/60 text-lg font-normal">Учеников обучаются</p>
+                <p className="text-black/60 text-lg font-normal">{t('numbers.students')}</p>
               </div>
             </div>
           </div>

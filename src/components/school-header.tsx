@@ -11,49 +11,45 @@ import { Menu, ChevronDown, Search } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Container from './custom/Container'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 
 import { SearchOverlay } from '@/features/search/SearchSection'
-
-const navItems = [
-  {
-    label: 'О школе',
-    dropdown: [
-      { label: 'О школе', href: '/about' },
-      // { label: 'Наша миссия', href: '#' },
-      // { label: 'Преподаватели', href: '#' },
-    ],
-  },
-  {
-    label: 'Поступление',
-    dropdown: [
-      { label: 'Требования', href: '#' },
-      { label: 'Документы', href: '#' },
-      { label: 'Тестирование', href: '/exam-registration' },
-    ],
-  },
-  {
-    label: 'Родителям',
-    dropdown: [
-      { label: 'Расписание', href: '#' },
-      { label: 'Оплата', href: '#' },
-      { label: 'Родительский комитет', href: '/parent-committee' },
-    ],
-  },
-  { label: 'Новости', href: '/news' },
-  { label: 'Контакты', href: '#' },
-]
-
-const languageOptions = [
-  { label: 'Русский', code: 'РУС' },
-  { label: 'Қазақша', code: 'ҚАЗ' },
-  { label: 'English', code: 'ENG' },
-]
+import LocaleSwitcher from '@/components/LocaleSwitcher'
+import { useTranslations } from 'next-intl'
 
 export default function SchoolHeader() {
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-  
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [open, setOpen] = useState(false)
+  const t = useTranslations('Header')
+
+  const navItems = useMemo(
+    () => [
+      {
+        label: t('nav.about.label'),
+        dropdown: [{ label: t('nav.about.dropdown.about'), href: '/about' }],
+      },
+      {
+        label: t('nav.admission.label'),
+        dropdown: [
+          { label: t('nav.admission.dropdown.requirements'), href: '#' },
+          { label: t('nav.admission.dropdown.documents'), href: '#' },
+          { label: t('nav.admission.dropdown.testing'), href: '/exam-registration' },
+        ],
+      },
+      {
+        label: t('nav.parents.label'),
+        dropdown: [
+          { label: t('nav.parents.dropdown.schedule'), href: '#' },
+          { label: t('nav.parents.dropdown.payment'), href: '#' },
+          { label: t('nav.parents.dropdown.parentCommittee'), href: '/parent-committee' },
+        ],
+      },
+      { label: t('nav.news'), href: '/news' },
+      { label: t('nav.contacts'), href: '#' },
+    ],
+    [t],
+  )
+
   return (
     <header className="bg-white fixed top-0 z-20 w-full h-16 border-b border-gray-100">
       <Container>
@@ -103,13 +99,13 @@ export default function SchoolHeader() {
             {/* Phone Number */}
             <div className="hidden lg:flex flex-col items-end">
               <span className="text-sm font-semibold text-[#000000]">+7 707 742-12-12</span>
-              <span className="text-xs text-gray-600">Колл-центр</span>
+              <span className="text-xs text-gray-600">{t('callCenter')}</span>
             </div>
 
             {/* Search Icon */}
-            <Button 
-              variant="ghost" 
-              size="icon" 
+            <Button
+              variant="ghost"
+              size="icon"
               className="text-[#000000] hover:bg-gray-50"
               onClick={() => setIsSearchOpen(true)}
             >
@@ -117,22 +113,7 @@ export default function SchoolHeader() {
             </Button>
 
             {/* Language Selector */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant="ghost"
-                  className="text-[#000000] hover:bg-gray-50 px-3 py-2 text-sm font-medium"
-                >
-                  {languageOptions[0].code}
-                  <ChevronDown className="ml-1 h-4 w-4" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                {languageOptions.map((lang, index) => (
-                  <DropdownMenuItem key={index}>{lang.label}</DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <LocaleSwitcher />
 
             {/* Mobile Menu Trigger */}
             <Drawer direction="right" open={open} onOpenChange={setOpen}>
@@ -176,12 +157,9 @@ export default function SchoolHeader() {
           </div>
         </div>
       </Container>
-      
+
       {/* Search Overlay */}
-      <SearchOverlay 
-        isOpen={isSearchOpen}
-        onClose={() => setIsSearchOpen(false)}
-      />
+      <SearchOverlay isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </header>
   )
 }

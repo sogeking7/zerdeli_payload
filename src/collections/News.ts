@@ -4,7 +4,6 @@ import { TableOfContents } from '@/blocks/TableOfContents/config'
 
 export const News: CollectionConfig = {
   slug: 'news',
-
   fields: [
     {
       name: 'googleDriveImageId',

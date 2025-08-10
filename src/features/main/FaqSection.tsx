@@ -3,6 +3,7 @@
 import Container from '@/components/custom/Container'
 import { Minus, Plus } from 'lucide-react'
 import React, { useState } from 'react'
+import { useTranslations } from 'next-intl'
 
 interface FaqItemProps {
   question: string
@@ -10,34 +11,6 @@ interface FaqItemProps {
   isOpen: boolean
   onClick: () => void
 }
-
-const faqData = [
-  {
-    question: 'В какое время проводятся занятия?',
-    answer: 'Занятие начинается в 8:45 утра и заканчивается в 5:00 вечера.',
-  },
-  {
-    question: 'Какова квалификация преподавателей? Могут ли они дать качественное образование?',
-    answer:
-      'Все наши преподаватели имеют высшую квалификационную категорию и многолетний опыт работы. Мы тщательно отбираем лучших специалистов, чтобы обеспечить высокое качество образования.',
-  },
-  {
-    question: 'Каково качество школьного питания?',
-    answer:
-      'Мы предлагаем сбалансированное трехразовое питание, разработанное совместно с диетологами. Все блюда готовятся на нашей кухне из свежих и качественных продуктов.',
-  },
-  {
-    question:
-      'Есть ли гарантия качества образования? Через сколько времени у ученика будет прогресс?',
-    answer:
-      'Мы гарантируем индивидуальный подход к каждому ученику. Прогресс зависит от многих факторов, но первые результаты, как правило, заметны уже через 2-3 месяца регулярных занятий.',
-  },
-  {
-    question: 'В чем отличие от других школ?',
-    answer:
-      'Наше ключевое отличие — это углубленное изучение IT-дисциплин, проектная деятельность и развитие soft skills, что готовит учеников к профессиям будущего.',
-  },
-]
 
 const FaqItem = ({ question, answer, isOpen, onClick }: FaqItemProps) => {
   return (
@@ -63,22 +36,28 @@ const FaqItem = ({ question, answer, isOpen, onClick }: FaqItemProps) => {
 
 export default function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
+  const t = useTranslations('HomePage')
 
   const handleItemClick = (index: number) => {
     setOpenIndex(openIndex === index ? null : index)
   }
 
+  const items = Array.from({ length: 5 }).map((_, index) => ({
+    question: t(`faq.items.${index}.q`),
+    answer: t(`faq.items.${index}.a`),
+  }))
+
   return (
     <section id="faq">
       <Container>
         <h2 className="text-2xl md:text-4xl text-center mb-10">
-          Часто задаваемые
+          {t('faq.headingTop')}
           <br />
-          вопросы
+          {t('faq.headingBottom')}
         </h2>
 
         <div className="w-full flex flex-col gap-4">
-          {faqData.map((item, index) => (
+          {items.map((item, index) => (
             <FaqItem
               key={index}
               question={item.question}
