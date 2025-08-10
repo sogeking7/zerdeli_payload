@@ -5,27 +5,17 @@ import { Button } from '@/components/ui/button'
 import NewsCard from '@/features/news/NewsCard'
 import type { News } from '@/payload-types'
 import { useTranslations } from 'next-intl'
+import getNews from '@/api/getNews'
+import { Skeleton } from '@/components/ui/skeleton'
 
 type Props = {
   initialDocs: News[]
   total: number
   pageSize: number
   initialPage?: number
-  // Server action provided by the page (calls Payload directly)
-  loadMoreAction: (page: number, limit: number) => Promise<{
-    docs: News[]
-    total: number
-    page: number
-  }>
 }
 
-export default function NewsLoadMore({
-  initialDocs,
-  total,
-  pageSize,
-  initialPage = 1,
-  loadMoreAction,
-}: Props) {
+export default function NewsLoadMore({ initialDocs, total, pageSize, initialPage = 1 }: Props) {
   const [items, setItems] = React.useState<News[]>(initialDocs)
   const [page, setPage] = React.useState<number>(initialPage)
   const [loading, setLoading] = React.useState(false)
@@ -40,7 +30,7 @@ export default function NewsLoadMore({
     setError(null)
     try {
       const nextPage = page + 1
-      const data = await loadMoreAction(nextPage, pageSize)
+      const data = await getNews(nextPage, pageSize)
       setItems((prev) => [...prev, ...data.docs])
       setPage(nextPage)
     } catch (e: any) {
@@ -56,24 +46,27 @@ export default function NewsLoadMore({
         {items.map((article) => (
           <NewsCard key={article.id} news={article} />
         ))}
+
+        {/* Show skeleton placeholders while loading next page */}
+        {loading &&
+          Array.from({ length: pageSize }).map((_, i) => (
+            <div key={`skeleton-${i}`} className="space-y-4">
+              <Skeleton className="w-full h-48 rounded-lg" />
+              <Skeleton className="h-6 w-3/4" />
+              <Skeleton className="h-4 w-1/2" />
+            </div>
+          ))}
       </div>
 
-      {!allLoaded && (
+      {!allLoaded && !loading && (
         <div className="mt-20 flex justify-center">
-          <Button
-            size="lg"
-            variant="secondary_green"
-            onClick={onLoadMore}
-            disabled={loading}
-          >
-            {loading ? t('buttons.loading') : t('buttons.loadMore')}
+          <Button size="lg" variant="secondary_green" onClick={onLoadMore}>
+            {t('buttons.loadMore')}
           </Button>
         </div>
       )}
 
-      {error && (
-        <p className="mt-4 text-center text-sm text-red-600">{error}</p>
-      )}
+      {error && <p className="mt-4 text-center text-sm text-red-600">{error}</p>}
     </>
   )
 }

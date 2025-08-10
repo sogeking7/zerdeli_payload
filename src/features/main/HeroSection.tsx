@@ -20,13 +20,11 @@ export default function HeroSection() {
         <div className="px-4 flex flex-col max-md:absolute max-md:bottom-8 items-center space-y-4">
           <Image src="/svg/sun.svg" width={45} height={45} alt="sun" />
 
-          <p className="text-base text-center lg:text-lg  opacity-70">
-            {t('heroTagline')}
-          </p>
+          <p className="text-base text-center lg:text-lg  opacity-70">{t('heroTagline')}</p>
         </div>
         <Image
           className="absolute max-sm:w-[240px] -z-10 right-0 top-[55%] -translate-y-1/2"
-          src="/dombyra.webp"
+          src="/main/dombyra.webp"
           width={360}
           height={360}
           alt="dombyra"

@@ -45,7 +45,7 @@ export default function SchoolHeader() {
         ],
       },
       { label: t('nav.news'), href: '/news' },
-      { label: t('nav.contacts'), href: '#' },
+      { label: t('nav.contacts'), href: '#footer' },
     ],
     [t],
   )

@@ -26,14 +26,14 @@ export default function NumbersSection() {
           </div>
           <Image
             className="absolute max-md:hidden bottom-0 right-0 rounded-br-2xl"
-            src="/children.webp"
+            src="/main/children.webp"
             alt="numbers"
             width={1000}
             height={1000}
           />
           <Image
             className="md:hidden absolute bottom-0 right-0"
-            src="/children-sm.webp"
+            src="/main/children-sm.webp"
             alt="numbers2"
             width={400}
             height={400}
