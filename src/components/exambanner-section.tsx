@@ -29,7 +29,7 @@ export default function ExamBanner() {
                   {t('examBanner.description')}
                 </p>
                 <Link
-                  href="#"
+                  href="/exam"
                   className="flex-shrink-0 px-6 py-3 rounded-[40px] bg-[#6646ea] hover:bg-[#5538c8] transition-colors"
                 >
                   <p className="text-sm font-semibold text-left text-white">

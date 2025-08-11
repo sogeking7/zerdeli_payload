@@ -156,3 +156,8 @@ html {
 .animate-marquee-reverse {
     animation: marquee-reverse 20s linear infinite;
 }
+
+.required:after {
+    content: " *";
+    color: var(--destructive)
+}

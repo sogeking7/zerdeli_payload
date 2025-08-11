@@ -168,10 +168,22 @@
     },
     "aboutCarousel": {
       "bullets": [
-        { "title": "Mathematics and logic", "description": "We teach to think, count and solve non-standard problems." },
-        { "title": "IT and robotics", "description": "We develop engineering thinking through technology." },
-        { "title": "English language", "description": "Improving reading and speaking skills." },
-        { "title": "Natural science", "description": "We dive into science by exploring the environment." }
+        {
+          "title": "Mathematics and logic",
+          "description": "We teach to think, count and solve non-standard problems."
+        },
+        {
+          "title": "IT and robotics",
+          "description": "We develop engineering thinking through technology."
+        },
+        {
+          "title": "English language",
+          "description": "Improving reading and speaking skills."
+        },
+        {
+          "title": "Natural science",
+          "description": "We dive into science by exploring the environment."
+        }
       ]
     },
     "mission": {
@@ -235,9 +247,19 @@
         "snack": "Snack"
       },
       "items": {
-        "breakfast": ["Dumplings"],
-        "lunch": ["Dumplings", "Buckwheat porridge", "Sirne", "Pilaf", "Soup sorpa"],
-        "snack": ["Dumplings"]
+        "breakfast": [
+          "Dumplings"
+        ],
+        "lunch": [
+          "Dumplings",
+          "Buckwheat porridge",
+          "Sirne",
+          "Pilaf",
+          "Soup sorpa"
+        ],
+        "snack": [
+          "Dumplings"
+        ]
       }
     }
   },
@@ -256,6 +278,31 @@
     "article": {
       "otherNews": "More news",
       "notFound": "Article not found"
+    }
+  },
+  "ExamPage": {
+    "success": "Sent!",
+    "title": "Exam registration",
+    "labels": {
+      "fioChild": "Child's full name",
+      "fioParent": "Parent's full name",
+      "className": "Enrollment grade",
+      "parentWhatsappPhone": "Parent's WhatsApp number",
+      "city": "City"
+    },
+    "cities": {
+      "astana": "Astana",
+      "shymkent": "Shymkent",
+      "zhezkazgan": "Zhezkazgan",
+      "taraz": "Taraz",
+      "atyrau": "Atyrau"
+    },
+    "buttons": {
+      "submit": "Submit",
+      "loading": "Loading..."
+    },
+    "placeholders": {
+      "whatsapp": "+7 777 777 77 77"
     }
   }
 }

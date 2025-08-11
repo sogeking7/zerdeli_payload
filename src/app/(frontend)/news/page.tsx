@@ -12,6 +12,7 @@ import { useTranslations } from 'next-intl'
 import NewsList from '@/features/news/NewsList'
 import NewsListSkeleton from '@/features/news/NewsListSkeletons'
 import { Suspense } from 'react'
+import ExamBanner from '@/components/exambanner-section'
 
 export default function NewsPage() {
   const t = useTranslations('NewsPage')
@@ -39,7 +40,7 @@ export default function NewsPage() {
           </div>
         </Container>
       </section>
-      <div></div>
+      <ExamBanner />
     </>
   )
 }

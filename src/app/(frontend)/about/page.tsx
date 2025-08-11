@@ -6,6 +6,7 @@ import StandardsSection from '@/features/about/StandardsSection'
 import ZerdeliPoint from '@/features/about/ZerdeliPoint'
 import AdditionSections from '@/features/main/AdditionSection'
 import FaqSection from '@/features/main/FaqSection'
+import ExamBanner from '@/components/exambanner-section'
 
 export default function AboutPage() {
   return (
@@ -18,7 +19,7 @@ export default function AboutPage() {
       <ZerdeliPoint />
       <FoodSection />
       <FaqSection />
-      <div></div>
+      <ExamBanner />
     </>
   )
 }

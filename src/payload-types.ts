@@ -70,6 +70,7 @@ export interface Config {
     users: User;
     media: Media;
     news: News;
+    exam_registration_requests: ExamRegistrationRequest;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -79,6 +80,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     news: NewsSelect<false> | NewsSelect<true>;
+    exam_registration_requests: ExamRegistrationRequestsSelect<false> | ExamRegistrationRequestsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -219,6 +221,20 @@ export interface News {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "exam_registration_requests".
+ */
+export interface ExamRegistrationRequest {
+  id: number;
+  fio_child: string;
+  fio_parent: string;
+  class_name: string;
+  parent_whatsapp_phone: string;
+  city: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -235,6 +251,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'news';
         value: number | News;
+      } | null)
+    | ({
+        relationTo: 'exam_registration_requests';
+        value: number | ExamRegistrationRequest;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -331,6 +351,19 @@ export interface NewsSelect<T extends boolean = true> {
   contentKk?: T;
   contentEn?: T;
   publishedDate?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "exam_registration_requests_select".
+ */
+export interface ExamRegistrationRequestsSelect<T extends boolean = true> {
+  fio_child?: T;
+  fio_parent?: T;
+  class_name?: T;
+  parent_whatsapp_phone?: T;
+  city?: T;
   updatedAt?: T;
   createdAt?: T;
 }
