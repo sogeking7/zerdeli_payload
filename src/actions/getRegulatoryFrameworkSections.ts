@@ -2,18 +2,19 @@
 
 import config from '@payload-config';
 import { getPayload } from 'payload';
-import { RegulatoryFrameworkDocument } from '@/payload-types'; // Импортируем типы
+import { SchoolDocument } from '@/payload-types'; // Используем новый тип
 
 export default async function getRegulatoryFrameworkSections() {
   const payloadConfig = await config;
   const payload = await getPayload({ config: payloadConfig });
 
   const { docs } = await payload.find({
-    collection: 'regulatory-framework-documents',
+    // ИСПРАВЛЕНО: Обращаемся к единой коллекции 'school-documents'
+    collection: 'school-documents',
     limit: 100,
   });
 
-  const documents = docs as RegulatoryFrameworkDocument[];
+  const documents = docs as SchoolDocument[];
 
   // Группируем документы по категориям
   const sectionsData = [
