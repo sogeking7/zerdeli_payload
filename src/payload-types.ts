@@ -71,6 +71,7 @@ export interface Config {
     media: Media;
     news: News;
     exam_registration_requests: ExamRegistrationRequest;
+    'school-documents': SchoolDocument;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -81,6 +82,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     news: NewsSelect<false> | NewsSelect<true>;
     exam_registration_requests: ExamRegistrationRequestsSelect<false> | ExamRegistrationRequestsSelect<true>;
+    'school-documents': SchoolDocumentsSelect<false> | SchoolDocumentsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -234,6 +236,28 @@ export interface ExamRegistrationRequest {
   createdAt: string;
 }
 /**
+ * Все загружаемые документы для сайта (PDF).
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "school-documents".
+ */
+export interface SchoolDocument {
+  id: number;
+  title: string;
+  category: 'grantRules' | 'paidEducation' | 'mainDocuments' | 'safety' | 'educationalProcess' | 'rights';
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
@@ -255,6 +279,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'exam_registration_requests';
         value: number | ExamRegistrationRequest;
+      } | null)
+    | ({
+        relationTo: 'school-documents';
+        value: number | SchoolDocument;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -366,6 +394,25 @@ export interface ExamRegistrationRequestsSelect<T extends boolean = true> {
   city?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "school-documents_select".
+ */
+export interface SchoolDocumentsSelect<T extends boolean = true> {
+  title?: T;
+  category?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

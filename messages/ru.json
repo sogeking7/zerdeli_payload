@@ -128,6 +128,7 @@
           "teachers": "Преподаватели",
           "corporateGovernance": "Корп. управление",
           "programs": "Образовательные программы",
+          "regulatoryFramework": "Нормативно-правовая база",
           "license": "Лицензия",
           "charity": "Благотворительность"
         }
@@ -303,6 +304,72 @@
     },
     "placeholders": {
       "whatsapp": "+7 777 777 77 77"
+    }
+  },
+  "RegulatoryFrameworkPage": {
+    "breadcrumb": {
+      "home": "Главная",
+      "about": "О школе"
+    },
+    "pageTitle": "О школе ZIS",
+    "title": "Нормативно-правовая база",
+    "sidebar": {
+      "teachers": "Преподавательский состав",
+      "corporateGovernance": "Корпоративное управление",
+      "educationalPrograms": "Образовательные программы",
+      "regulatoryFramework": "Нормативно-правовая база",
+      "reports": "Отчеты",
+      "license": "Лицензия/аккредитация",
+      "budget": "Бюджет, благотворительность",
+      "accessibility": "Условия доступности",
+      "safety": "Безопасность"
+    },
+    "sections": {
+      "mainDocuments": {
+        "title": "Основные документы школы",
+        "description": "Основной документ, регулирующий деятельность образовательного учреждения.",
+        "documents": {
+          "charter": "Устав школы",
+          "accreditation": "Свидетельство о государственной аккредитации"
+        }
+      },
+      "safety": {
+        "title": "Безопасность и охрана здоровья"
+      },
+      "educationalProcess": {
+        "title": "Документы, регулирующие образовательный процесс"
+      },
+      "rights": {
+        "title": "Права и обязанности участников образовательного процесса"
+      }
+    }
+  },
+  "AdmissionRulesPage": {
+    "breadcrumb": {
+      "home": "Главная",
+      "admission": "Поступление"
+    },
+    "pageTitle": "Поступление",
+    "title": "Правила приема",
+    "sidebar": {
+      "admissionRules": "Правила приема",
+      "enrollmentDocs": "Документы для зачисления",
+      "documentsSchedule": "График приема документов",
+      "schoolTransfer": "Перевод в школу",
+      "benefits": "Льготы и особые условия",
+      "contactPersons": "Контакты ответственных лиц"
+    },
+    "sections": {
+      "educationalGrant": {
+        "title": "Правила присуждения и размеров образовательного гранта",
+        "description": "Основной документ, регулирующий деятельность образовательного учреждения.",
+        "documents": {
+          "grantRules": "Присуждения образовательного гранта"
+        }
+      },
+      "paidEducation": {
+        "title": "Правила приема на платное обучение"
+      }
     }
   }
 }

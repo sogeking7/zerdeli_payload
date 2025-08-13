@@ -128,6 +128,7 @@
           "teachers": "Мұғалімдер",
           "corporateGovernance": "Корпоративтік басқару",
           "programs": "Білім беру бағдарламалары",
+          "regulatoryFramework": "Нормативтік-құқықтық база",
           "license": "Лицензия",
           "charity": "Қайырымдылық"
         }
@@ -303,6 +304,72 @@
     },
     "placeholders": {
       "whatsapp": "+7 777 777 77 77"
+    }
+  },
+  "RegulatoryFrameworkPage": {
+    "breadcrumb": {
+      "home": "Басты бет",
+      "about": "Мектеп туралы"
+    },
+    "pageTitle": "ZIS туралы",
+    "title": "Нормативтік-құқықтық база",
+    "sidebar": {
+      "teachers": "Оқытушылар құрамы",
+      "corporateGovernance": "Корпоративтік басқару",
+      "educationalPrograms": "Білім беру бағдарламалары",
+      "regulatoryFramework": "Нормативтік-құқықтық база",
+      "reports": "Есептер",
+      "license": "Лицензия/аккредитация",
+      "budget": "Бюджет, қайырымдылық",
+      "accessibility": "Қолжетімділік шарттары",
+      "safety": "Қауіпсіздік"
+    },
+    "sections": {
+      "mainDocuments": {
+        "title": "Мектептің негізгі құжаттары",
+        "description": "Білім беру мекемесінің қызметін реттейтін негізгі құжат.",
+        "documents": {
+          "charter": "Мектеп жарғысы",
+          "accreditation": "Мемлекеттік аккредитация туралы куәлік"
+        }
+      },
+      "safety": {
+        "title": "Қауіпсіздік және денсаулықты қорғау"
+      },
+      "educationalProcess": {
+        "title": "Білім беру процесін реттейтін құжаттар"
+      },
+      "rights": {
+        "title": "Білім беру процесіне қатысушылардың құқықтары мен міндеттері"
+      }
+    }
+  },
+  "AdmissionRulesPage": {
+    "breadcrumb": {
+      "home": "Басты бет",
+      "admission": "Қабылдау"
+    },
+    "pageTitle": "Қабылдау",
+    "title": "Қабылдау ережелері",
+    "sidebar": {
+      "admissionRules": "Қабылдау ережелері",
+      "enrollmentDocs": "Құжаттар тізімі",
+      "documentsSchedule": "Құжаттарды қабылдау кестесі",
+      "schoolTransfer": "Мектепке ауысу",
+      "benefits": "Жеңілдіктер және ерекше жағдайлар",
+      "contactPersons": "Жауапты тұлғалардың байланыстары"
+    },
+    "sections": {
+      "educationalGrant": {
+        "title": "Білім беру грантын тағайындау және мөлшері ережелері",
+        "description": "Білім беру мекемесінің қызметін реттейтін негізгі құжат.",
+        "documents": {
+          "grantRules": "Білім беру грантын тағайындау"
+        }
+      },
+      "paidEducation": {
+        "title": "Ақылы оқуға қабылдау ережелері"
+      }
     }
   }
 }

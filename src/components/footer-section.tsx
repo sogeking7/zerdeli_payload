@@ -38,6 +38,7 @@ export default function Footer() {
           { text: t('columns.aboutZIS.links.teachers'), href: '#' },
           { text: t('columns.aboutZIS.links.corporateGovernance'), href: '#' },
           { text: t('columns.aboutZIS.links.programs'), href: '#' },
+          { text: t('columns.aboutZIS.links.regulatoryFramework'), href: '/regulatory-framework' },
           { text: t('columns.aboutZIS.links.license'), href: '#' },
           { text: t('columns.aboutZIS.links.charity'), href: '#' },
         ],
@@ -45,7 +46,7 @@ export default function Footer() {
       {
         title: t('columns.admission.title'),
         links: [
-          { text: t('columns.admission.links.admissionRules'), href: '#' },
+          { text: t('columns.admission.links.admissionRules'), href: '/admission-rules' },
           { text: t('columns.admission.links.enrollmentDocs'), href: '#' },
           { text: t('columns.admission.links.documentsSchedule'), href: '#' },
           { text: t('columns.admission.links.schoolTransfer'), href: '#' },

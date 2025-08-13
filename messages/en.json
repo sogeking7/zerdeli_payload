@@ -128,6 +128,7 @@
           "teachers": "Teachers",
           "corporateGovernance": "Corporate governance",
           "programs": "Educational programs",
+          "regulatoryFramework": "Regulatory and Legal Framework",
           "license": "License",
           "charity": "Charity"
         }
@@ -303,6 +304,72 @@
     },
     "placeholders": {
       "whatsapp": "+7 777 777 77 77"
+    }
+  },
+  "RegulatoryFrameworkPage": {
+    "breadcrumb": {
+      "home": "Home",
+      "about": "About"
+    },
+    "pageTitle": "About ZIS",
+    "title": "Regulatory and Legal Framework",
+    "sidebar": {
+      "teachers": "Teaching Staff",
+      "corporateGovernance": "Corporate Governance",
+      "educationalPrograms": "Educational Programs",
+      "regulatoryFramework": "Regulatory and Legal Framework",
+      "reports": "Reports",
+      "license": "License/Accreditation",
+      "budget": "Budget, Charity",
+      "accessibility": "Accessibility Conditions",
+      "safety": "Safety"
+    },
+    "sections": {
+      "mainDocuments": {
+        "title": "Main School Documents",
+        "description": "The main document regulating the activities of the educational institution.",
+        "documents": {
+          "charter": "School Charter",
+          "accreditation": "State Accreditation Certificate"
+        }
+      },
+      "safety": {
+        "title": "Safety and Health Protection"
+      },
+      "educationalProcess": {
+        "title": "Documents Regulating the Educational Process"
+      },
+      "rights": {
+        "title": "Rights and Obligations of Educational Process Participants"
+      }
+    }
+  },
+  "AdmissionRulesPage": {
+    "breadcrumb": {
+      "home": "Home",
+      "admission": "Admission"
+    },
+    "pageTitle": "Admission",
+    "title": "Admission Rules",
+    "sidebar": {
+      "admissionRules": "Admission Rules",
+      "enrollmentDocs": "Enrollment Documents",
+      "documentsSchedule": "Documents Schedule",
+      "schoolTransfer": "School Transfer",
+      "benefits": "Benefits and Special Conditions",
+      "contactPersons": "Contact Persons"
+    },
+    "sections": {
+      "educationalGrant": {
+        "title": "Educational Grant Award Rules and Amounts",
+        "description": "The main document regulating the activities of the educational institution.",
+        "documents": {
+          "grantRules": "Educational Grant Award"
+        }
+      },
+      "paidEducation": {
+        "title": "Paid Education Admission Rules"
+      }
     }
   }
 }
