@@ -71,7 +71,9 @@ export interface Config {
     media: Media;
     news: News;
     exam_registration_requests: ExamRegistrationRequest;
-    'school-documents': SchoolDocument;
+    'school-admission': SchoolAdmission;
+    'school-parent': SchoolParent;
+    'school-about': SchoolAbout;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -82,7 +84,9 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     news: NewsSelect<false> | NewsSelect<true>;
     exam_registration_requests: ExamRegistrationRequestsSelect<false> | ExamRegistrationRequestsSelect<true>;
-    'school-documents': SchoolDocumentsSelect<false> | SchoolDocumentsSelect<true>;
+    'school-admission': SchoolAdmissionSelect<false> | SchoolAdmissionSelect<true>;
+    'school-parent': SchoolParentSelect<false> | SchoolParentSelect<true>;
+    'school-about': SchoolAboutSelect<false> | SchoolAboutSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -237,10 +241,11 @@ export interface ExamRegistrationRequest {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "school-documents".
+ * via the `definition` "school-admission".
  */
-export interface SchoolDocument {
+export interface SchoolAdmission {
   id: number;
+  slug: string;
   title: string;
   accordions?:
     | {
@@ -262,6 +267,85 @@ export interface SchoolDocument {
         } | null;
         files?:
           | {
+              fileName: string;
+              fileId: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "school-parent".
+ */
+export interface SchoolParent {
+  id: number;
+  slug: string;
+  title: string;
+  accordions?:
+    | {
+        title: string;
+        content?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        files?:
+          | {
+              fileName: string;
+              fileId: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "school-about".
+ */
+export interface SchoolAbout {
+  id: number;
+  slug: string;
+  title: string;
+  accordions?:
+    | {
+        title: string;
+        content?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        files?:
+          | {
+              fileName: string;
               fileId: string;
               id?: string | null;
             }[]
@@ -296,8 +380,16 @@ export interface PayloadLockedDocument {
         value: number | ExamRegistrationRequest;
       } | null)
     | ({
-        relationTo: 'school-documents';
-        value: number | SchoolDocument;
+        relationTo: 'school-admission';
+        value: number | SchoolAdmission;
+      } | null)
+    | ({
+        relationTo: 'school-parent';
+        value: number | SchoolParent;
+      } | null)
+    | ({
+        relationTo: 'school-about';
+        value: number | SchoolAbout;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -412,9 +504,10 @@ export interface ExamRegistrationRequestsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "school-documents_select".
+ * via the `definition` "school-admission_select".
  */
-export interface SchoolDocumentsSelect<T extends boolean = true> {
+export interface SchoolAdmissionSelect<T extends boolean = true> {
+  slug?: T;
   title?: T;
   accordions?:
     | T
@@ -424,6 +517,55 @@ export interface SchoolDocumentsSelect<T extends boolean = true> {
         files?:
           | T
           | {
+              fileName?: T;
+              fileId?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "school-parent_select".
+ */
+export interface SchoolParentSelect<T extends boolean = true> {
+  slug?: T;
+  title?: T;
+  accordions?:
+    | T
+    | {
+        title?: T;
+        content?: T;
+        files?:
+          | T
+          | {
+              fileName?: T;
+              fileId?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "school-about_select".
+ */
+export interface SchoolAboutSelect<T extends boolean = true> {
+  slug?: T;
+  title?: T;
+  accordions?:
+    | T
+    | {
+        title?: T;
+        content?: T;
+        files?:
+          | T
+          | {
+              fileName?: T;
               fileId?: T;
               id?: T;
             };

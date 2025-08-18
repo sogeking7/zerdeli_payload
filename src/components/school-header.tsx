@@ -7,7 +7,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { Drawer, DrawerContent, DrawerHeader, DrawerTrigger } from '@/components/ui/drawer'
-import { Menu, ChevronDown, Search } from 'lucide-react'
+import { ChevronDown, Menu, Search } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Container from './custom/Container'
@@ -17,7 +17,15 @@ import { SearchOverlay } from '@/features/search/SearchSection'
 import LocaleSwitcher from '@/components/LocaleSwitcher'
 import { useTranslations } from 'next-intl'
 
-export default function SchoolHeader() {
+export default function SchoolHeader({
+  schoolAbouts,
+  schoolAdmissions,
+  schoolParents,
+}: {
+  schoolAbouts: { label: string; href: string }[]
+  schoolAdmissions: { label: string; href: string }[]
+  schoolParents: { label: string; href: string }[]
+}) {
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [open, setOpen] = useState(false)
   const t = useTranslations('Header')
@@ -26,37 +34,15 @@ export default function SchoolHeader() {
     () => [
       {
         label: t('nav.about.label'),
-        dropdown: [{ label: t('nav.about.dropdown.about'), href: '/about' }
-        , { label: t('nav.about.dropdown.teachers'), href: '/teachers' },
-        { label: t('nav.about.dropdown.management'), href: '/corporate-management' },
-        { label: t('nav.about.dropdown.programs'), href: '/educational-programs' },
-            { label: t('nav.about.dropdown.regulatoryFramework'), href: '/regulatory-framework' },
-        { label: t('nav.about.dropdown.reports'), href: '/reports' },
-        { label: t('nav.about.dropdown.license'), href: '/license' },
-            { label: t('nav.about.dropdown.charity'), href: '/charity' },
-        { label: t('nav.about.dropdown.accessibilityConditions'), href: '/accessibility-conditions' },
-            { label: t('nav.about.dropdown.safety'), href: '/safety' },
-        ],
+        dropdown: [{ label: t('nav.about.dropdown.about'), href: '/about' }, ...schoolAbouts],
       },
       {
         label: t('nav.admission.label'),
-        dropdown: [
-          { label: t('nav.admission.dropdown.requirements'), href: '/admission-rules' },
-          { label: t('nav.admission.dropdown.enrollmentDocuments'), href: '/documents' },
-            { label: t('nav.admission.dropdown.documentsSchedule'), href: '/documents-schedule' },
-            { label: t('nav.admission.dropdown.schoolTransfer'), href: '/school-transfer' },
-            { label: t('nav.admission.dropdown.benefits'), href: '/benefits' },
-        ],
+        dropdown: [...schoolAdmissions],
       },
       {
         label: t('nav.parents.label'),
-        dropdown: [
-          { label: t('nav.parents.dropdown.parentCommittee'), href: '/parent-committee' },
-            { label: t('nav.parents.dropdown.eDiary'), href: '/e-diary' },
-            { label: t('nav.parents.dropdown.accessibility'), href: '/accessibility' },
-            { label: t('nav.parents.dropdown.safety'), href: '/safety' },
-            { label: t('nav.parents.dropdown.admission'), href: '/admission' },
-        ],
+        dropdown: [...schoolParents],
       },
       { label: t('nav.news'), href: '/news' },
       { label: t('nav.contacts'), href: '#footer' },

@@ -2,16 +2,18 @@ import type { CollectionConfig } from 'payload'
 import { BlocksFeature, FixedToolbarFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
 import { TableOfContents } from '@/blocks/TableOfContents/config'
 
-export const SchoolDocuments: CollectionConfig = {
-  slug: 'school-documents',
+export const SchoolAdmission: CollectionConfig = {
+  slug: 'school-admission',
   labels: {
-    singular: 'School Document',
-    plural: 'School Documents',
-  },
-  admin: {
-    useAsTitle: 'title',
+    singular: 'School Admission',
+    plural: 'School Admissions',
   },
   fields: [
+    {
+      name: 'slug',
+      type: 'text',
+      required: true,
+    },
     {
       name: 'title',
       type: 'text',
@@ -45,6 +47,12 @@ export const SchoolDocuments: CollectionConfig = {
           type: 'array',
           label: 'Google Drive Files',
           fields: [
+            {
+              name: 'fileName',
+              type: 'text',
+              label: 'Google Drive File Name',
+              required: true,
+            },
             {
               name: 'fileId',
               type: 'text',

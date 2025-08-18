@@ -33,7 +33,9 @@ export default function NewsPage() {
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
-            <h1 className="mt-8 md:mt-10 mb-10 md:text-4xl text-2xl">{t('listPage.title')}</h1>
+            <h1 className="mt-8 md:mt-10 mb-10 md:text-4xl text-2xl font-semibold">
+              {t('listPage.title')}
+            </h1>
             <Suspense fallback={<NewsListSkeleton />}>
               <NewsList />
             </Suspense>

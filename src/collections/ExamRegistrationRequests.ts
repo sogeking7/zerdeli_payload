@@ -2,6 +2,10 @@ import type { CollectionConfig } from 'payload'
 
 export const ExamRegistrationRequests: CollectionConfig = {
   slug: 'exam_registration_requests',
+  labels: {
+    singular: 'Exam Registration Request',
+    plural: 'Exam Registration Requests',
+  },
   fields: [
     {
       name: 'fio_child',
