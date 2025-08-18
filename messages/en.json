@@ -95,23 +95,36 @@
       "about": {
         "label": "About",
         "dropdown": {
-          "about": "About"
+          "about": "About ZIS",
+          "teachers": "Teaching Staff",
+          "management": "Corporate Governance",
+          "programs": "Educational Programs",
+          "regulatoryFramework": "Regulatory Framework",
+          "reports": "Reports",
+          "license": "License/Accreditation",
+          "charity": "Budget, Charity",
+          "accessibilityConditions": "Accessibility Conditions",
+          "safety": "Safety"
         }
       },
       "admission": {
         "label": "Admission",
         "dropdown": {
-          "requirements": "Requirements",
-          "documents": "Documents",
-          "testing": "Testing"
+          "requirements": "Admission Rules",
+          "enrollmentDocuments": "Documents for Enrollment",
+          "documentsSchedule": "Document documentsSchedule",
+          "schoolTransfer": "School Transfer",
+          "benefits": "Benefits and Special Conditions"
         }
       },
       "parents": {
         "label": "For Parents",
         "dropdown": {
-          "schedule": "Schedule",
-          "payment": "Payment",
-          "parentCommittee": "Parent committee"
+          "parentCommittee": "Parent Committee",
+          "eDiary": "Electronic Diary",
+          "accessibility": "Accessibility Conditions",
+          "safety": "Safety",
+          "admission": "Admission"
         }
       },
       "news": "News",

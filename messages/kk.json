@@ -95,23 +95,36 @@
       "about": {
         "label": "Мектеп туралы",
         "dropdown": {
-          "about": "Мектеп туралы"
+          "about": "ZIS Мектеп туралы",
+          "teachers": "Мұғалімдер құрамы",
+          "management": "Корпоративтік басқару",
+          "programs": "Білім беру бағдарламалары",
+          "regulatoryFramework": "Нормативтік-құқықтық база",
+          "reports": "Есептер",
+          "license": "Лицензия/аккредиттеу",
+          "charity": "Бюджет, қайырымдылық",
+          "accessibilityConditions": "Бюджет, қайырымдылық",
+          "safety": "Қауіпсіздік"
         }
       },
       "admission": {
         "label": "Қабылдау",
         "dropdown": {
-          "requirements": "Талаптар",
-          "documents": "Құжаттар",
-          "testing": "Тестілеу"
+          "requirements": "Қабылдау ережелері",
+          "enrollmentDocuments": "Қабылдауға қажетті құжаттар",
+          "documentsSchedule": "Құжаттарды қабылдау кестесі",
+          "schoolTransfer": "Мектепке ауысу",
+          "benefits": "Жеңілдіктер және ерекше шарттар"
         }
       },
       "parents": {
         "label": "Ата-аналарға",
         "dropdown": {
-          "schedule": "Кесте",
-          "payment": "Төлем",
-          "parentCommittee": "Ата-аналар комитеті"
+          "parentCommittee": "Ата-аналар комитеті",
+          "eDiary": "Электрондық күнделік",
+          "accessibility": "Қолжетімділік шарттары",
+          "safety": "Қауіпсіздік",
+          "admission": "Қабылдау"
         }
       },
       "news": "Жаңалықтар",

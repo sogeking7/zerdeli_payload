@@ -95,23 +95,36 @@
       "about": {
         "label": "О школе",
         "dropdown": {
-          "about": "О школе"
+          "about": "О школе ZIS",
+          "teachers": "Преподавательский состав",
+          "management": "Корпоративное управление",
+          "programs": "Образовательные программы",
+          "regulatoryFramework": "Нормативно-правовая база",
+          "reports": "Отчеты",
+          "license": "Лицензия/аккредитация",
+          "charity": "Бюджет, благотворительность",
+          "accessibilityConditions": "Условия доступности",
+          "safety": "Безопасность"
         }
       },
       "admission": {
         "label": "Поступление",
         "dropdown": {
-          "requirements": "Требования",
-          "documents": "Документы",
-          "testing": "Тестирование"
+          "requirements": "Правила приема",
+          "enrollmentDocuments": "Документы для зачисления",
+          "documentsSchedule": "График приема документов",
+          "schoolTransfer": "Перевод в школу",
+          "benefits": "Льготы и особые условия"
         }
       },
       "parents": {
         "label": "Родителям",
         "dropdown": {
-          "schedule": "Расписание",
-          "payment": "Оплата",
-          "parentCommittee": "Родительский комитет"
+            "parentCommittee": "Родительский комитет",
+            "eDiary": "Электронный дневник",
+            "accessibility": "Условия доступности",
+            "safety": "Безопасность",
+            "admission": "Поступление"
         }
       },
       "news": "Новости",

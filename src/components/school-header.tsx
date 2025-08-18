@@ -26,22 +26,36 @@ export default function SchoolHeader() {
     () => [
       {
         label: t('nav.about.label'),
-        dropdown: [{ label: t('nav.about.dropdown.about'), href: '/about' }],
+        dropdown: [{ label: t('nav.about.dropdown.about'), href: '/about' }
+        , { label: t('nav.about.dropdown.teachers'), href: '/teachers' },
+        { label: t('nav.about.dropdown.management'), href: '/corporate-management' },
+        { label: t('nav.about.dropdown.programs'), href: '/educational-programs' },
+            { label: t('nav.about.dropdown.regulatoryFramework'), href: '/regulatory-framework' },
+        { label: t('nav.about.dropdown.reports'), href: '/reports' },
+        { label: t('nav.about.dropdown.license'), href: '/license' },
+            { label: t('nav.about.dropdown.charity'), href: '/charity' },
+        { label: t('nav.about.dropdown.accessibilityConditions'), href: '/accessibility-conditions' },
+            { label: t('nav.about.dropdown.safety'), href: '/safety' },
+        ],
       },
       {
         label: t('nav.admission.label'),
         dropdown: [
-          { label: t('nav.admission.dropdown.requirements'), href: '#' },
-          { label: t('nav.admission.dropdown.documents'), href: '#' },
-          { label: t('nav.admission.dropdown.testing'), href: '/exam-registration' },
+          { label: t('nav.admission.dropdown.requirements'), href: '/admission-rules' },
+          { label: t('nav.admission.dropdown.enrollmentDocuments'), href: '/documents' },
+            { label: t('nav.admission.dropdown.documentsSchedule'), href: '/documents-schedule' },
+            { label: t('nav.admission.dropdown.schoolTransfer'), href: '/school-transfer' },
+            { label: t('nav.admission.dropdown.benefits'), href: '/benefits' },
         ],
       },
       {
         label: t('nav.parents.label'),
         dropdown: [
-          { label: t('nav.parents.dropdown.schedule'), href: '#' },
-          { label: t('nav.parents.dropdown.payment'), href: '#' },
           { label: t('nav.parents.dropdown.parentCommittee'), href: '/parent-committee' },
+            { label: t('nav.parents.dropdown.eDiary'), href: '/e-diary' },
+            { label: t('nav.parents.dropdown.accessibility'), href: '/accessibility' },
+            { label: t('nav.parents.dropdown.safety'), href: '/safety' },
+            { label: t('nav.parents.dropdown.admission'), href: '/admission' },
         ],
       },
       { label: t('nav.news'), href: '/news' },
