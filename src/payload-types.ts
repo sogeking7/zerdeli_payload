@@ -236,26 +236,41 @@ export interface ExamRegistrationRequest {
   createdAt: string;
 }
 /**
- * Все загружаемые документы для сайта (PDF).
- *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "school-documents".
  */
 export interface SchoolDocument {
   id: number;
   title: string;
-  category: 'grantRules' | 'paidEducation' | 'mainDocuments' | 'safety' | 'educationalProcess' | 'rights';
+  accordions?:
+    | {
+        title: string;
+        content?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        files?:
+          | {
+              fileId: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -401,18 +416,21 @@ export interface ExamRegistrationRequestsSelect<T extends boolean = true> {
  */
 export interface SchoolDocumentsSelect<T extends boolean = true> {
   title?: T;
-  category?: T;
+  accordions?:
+    | T
+    | {
+        title?: T;
+        content?: T;
+        files?:
+          | T
+          | {
+              fileId?: T;
+              id?: T;
+            };
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
-  url?: T;
-  thumbnailURL?: T;
-  filename?: T;
-  mimeType?: T;
-  filesize?: T;
-  width?: T;
-  height?: T;
-  focalX?: T;
-  focalY?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

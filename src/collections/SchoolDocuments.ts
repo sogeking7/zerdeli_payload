@@ -1,52 +1,57 @@
 import type { CollectionConfig } from 'payload'
+import { BlocksFeature, FixedToolbarFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
+import { TableOfContents } from '@/blocks/TableOfContents/config'
 
 export const SchoolDocuments: CollectionConfig = {
-  slug: 'school-documents', // Новое общее API-имя
+  slug: 'school-documents',
+  labels: {
+    singular: 'School Document',
+    plural: 'School Documents',
+  },
   admin: {
     useAsTitle: 'title',
-    description: 'Все загружаемые документы для сайта (PDF).',
-  },
-  upload: {
-    staticDir: 'school_docs',
-    mimeTypes: ['application/pdf'],
   },
   fields: [
     {
       name: 'title',
       type: 'text',
       required: true,
-      label: 'Название документа',
     },
     {
-      name: 'category',
-      type: 'select',
-      required: true,
-      label: 'Категория документа',
-      // ИСПРАВЛЕНО: Добавлены все категории в один список
-      options: [
+      name: 'accordions',
+      type: 'array',
+      label: 'Accordions',
+      fields: [
         {
-          label: 'Правила приема: Грант',
-          value: 'grantRules',
+          name: 'title',
+          type: 'text',
+          required: true,
         },
         {
-          label: 'Правила приема: Платное',
-          value: 'paidEducation',
+          name: 'content',
+          type: 'richText',
+          editor: lexicalEditor({
+            features: ({ defaultFeatures }) => [
+              ...defaultFeatures,
+              BlocksFeature({
+                blocks: [TableOfContents],
+              }),
+              FixedToolbarFeature(),
+            ],
+          }),
         },
         {
-          label: 'Норм. база: Основные документы',
-          value: 'mainDocuments',
-        },
-        {
-          label: 'Норм. база: Безопасность',
-          value: 'safety',
-        },
-        {
-          label: 'Норм. база: Образовательный процесс',
-          value: 'educationalProcess',
-        },
-        {
-          label: 'Норм. база: Права и обязанности',
-          value: 'rights',
+          name: 'files',
+          type: 'array',
+          label: 'Google Drive Files',
+          fields: [
+            {
+              name: 'fileId',
+              type: 'text',
+              label: 'Google Drive File ID',
+              required: true,
+            },
+          ],
         },
       ],
     },
