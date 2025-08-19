@@ -1,5 +1,4 @@
 import Container from '@/components/custom/Container'
-import * as React from 'react'
 
 import {
   Breadcrumb,
@@ -14,27 +13,12 @@ import { Suspense } from 'react'
 import DocsList from '@/features/docs/DocsList'
 import DocsListSkeleton from '@/features/docs/DocsListSkeletons'
 import getSchoolAbouts from '@/api/getSchoolAbouts'
-import {useLocale} from "next-intl";
-import { useRouter, useSearchParams } from 'next/navigation'
+import {useTranslations} from 'next-intl'
 
 
 
 export default function SchoolAboutPage() {
-    const locale = useLocale()
-    const searchParams = useSearchParams()
-    const tabId = searchParams.get('tabId') || null
-
-    const getLocalizedTitle = (doc: any, currentLocale: string) => {
-        switch (currentLocale) {
-            case 'kk':
-                return doc?.titleKk || doc?.title
-            case 'en':
-                return doc?.titleEn || doc?.title
-            default:
-                return doc?.title
-        }
-    }
-
+    const t = useTranslations("SchoolAboutPage");
   return (
     <>
       <section id="docs">
@@ -43,15 +27,21 @@ export default function SchoolAboutPage() {
             <Breadcrumb className="pt-6">
               <BreadcrumbList>
                 <BreadcrumbItem>
-                    {getLocalizedTitle({ title: 'Главная', titleKk: 'Басты бет', titleEn: 'Home' }, locale)}
+                     <BreadcrumbLink href="/">
+                         {t("breadcrumb.home")}
+                     </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
-                    {getLocalizedTitle({ title: 'О школе', titleKk: 'Мектеп туралы', titleEn: 'About School' }, locale)}
+                    <BreadcrumbPage>
+                        {t("breadcrumb.about")}
+                    </BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
-              {getLocalizedTitle({ title: 'О школе', titleKk: 'Мектеп туралы', titleEn: 'About School' }, locale)}
+              <h1 className="mt-8 md:mt-10 mb-10 md:text-4xl text-2xl font-semibold">
+                  {t("title")}
+              </h1>
             <Suspense fallback={<DocsListSkeleton />}>
               <DocsList getDocs={getSchoolAbouts}  />
             </Suspense>

@@ -12,9 +12,11 @@ import { Suspense } from 'react'
 import DocsList from '@/features/docs/DocsList'
 import DocsListSkeleton from '@/features/docs/DocsListSkeletons'
 import getSchoolAdmissions from '@/api/getSchoolAdmissions'
+import {useTranslations} from "next-intl";
 
 
 export default function SchoolAdmissionPage() {
+    const t = useTranslations("AdmissionRulesPage");
   return (
     <>
       <section id="docs">
@@ -23,15 +25,21 @@ export default function SchoolAdmissionPage() {
             <Breadcrumb className="pt-6">
               <BreadcrumbList>
                 <BreadcrumbItem>
-                  <BreadcrumbLink href="/">Главная</BreadcrumbLink>
+                  <BreadcrumbLink href="/">
+                      {t("breadcrumb.home")}
+                  </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
-                  <BreadcrumbPage>Поступление</BreadcrumbPage>
+                  <BreadcrumbPage>
+                      {t("breadcrumb.admission")}
+                  </BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
-            <h1 className="mt-8 md:mt-10 mb-10 md:text-4xl text-2xl font-semibold">Поступление</h1>
+            <h1 className="mt-8 md:mt-10 mb-10 md:text-4xl text-2xl font-semibold">
+                {t("title")}
+            </h1>
             <Suspense fallback={<DocsListSkeleton />}>
               <DocsList getDocs={getSchoolAdmissions} />
             </Suspense>

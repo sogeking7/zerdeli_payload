@@ -319,7 +319,17 @@
       "whatsapp": "+7 777 777 77 77"
     }
   },
-  "RegulatoryFrameworkPage": {
+
+  "SchoolAboutPage": {
+    "breadcrumb": {
+      "home": "Home",
+      "about": "About school"
+    },
+    "title": "About ZIS"
+  },
+
+
+"RegulatoryFrameworkPage": {
     "breadcrumb": {
       "home": "Home",
       "about": "About"
@@ -357,13 +367,22 @@
       }
     }
   },
+  "SchoolParentsPage": {
+    "breadcrumb": {
+      "home": "Home",
+      "about": "About School"
+    },
+    "title": "For Parents"
+  },
   "AdmissionRulesPage": {
     "breadcrumb": {
       "home": "Home",
-      "admission": "Admission"
+      "admission": "About school"
     },
+
+
     "pageTitle": "Admission",
-    "title": "Admission Rules",
+    "title": "Admission",
     "sidebar": {
       "admissionRules": "Admission Rules",
       "enrollmentDocs": "Enrollment Documents",
@@ -383,6 +402,8 @@
       "paidEducation": {
         "title": "Paid Education Admission Rules"
       }
+
+
     }
   }
 }

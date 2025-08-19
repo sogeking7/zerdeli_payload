@@ -319,6 +319,20 @@
       "whatsapp": "+7 777 777 77 77"
     }
   },
+  "SchoolAboutPage": {
+    "breadcrumb": {
+      "home": "Главная",
+      "about": "О школе"
+    },
+    "title": "О школе ZIS"
+  },
+  "SchoolParentsPage": {
+    "breadcrumb": {
+      "home": "Главная",
+      "about": "О школе"
+    },
+    "title": "Родителям"
+  },
   "RegulatoryFrameworkPage": {
     "breadcrumb": {
       "home": "Главная",
@@ -360,10 +374,10 @@
   "AdmissionRulesPage": {
     "breadcrumb": {
       "home": "Главная",
-      "admission": "Поступление"
+      "admission": "О школе"
     },
     "pageTitle": "Поступление",
-    "title": "Правила приема",
+    "title": "Поступление",
     "sidebar": {
       "admissionRules": "Правила приема",
       "enrollmentDocs": "Документы для зачисления",

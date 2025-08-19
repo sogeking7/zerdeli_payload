@@ -294,6 +294,7 @@
       "notFound": "Мақала табылмады"
     }
   },
+
   "ExamPage": {
     "success": "Жіберілді!",
     "title": "Емтиханға тіркелу",
@@ -357,13 +358,20 @@
       }
     }
   },
+  "SchoolParentPage": {
+    "breadcrumb": {
+      "home": "Басты бет",
+      "about": "Мектеп туралы"
+    },
+    "title": "ZIS туралы"
+  },
   "AdmissionRulesPage": {
     "breadcrumb": {
       "home": "Басты бет",
-      "admission": "Қабылдау"
+      "admission": "Мектеп туралы"
     },
     "pageTitle": "Қабылдау",
-    "title": "Қабылдау ережелері",
+    "title": "Қабылдау",
     "sidebar": {
       "admissionRules": "Қабылдау ережелері",
       "enrollmentDocs": "Құжаттар тізімі",
