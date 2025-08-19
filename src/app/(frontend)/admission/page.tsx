@@ -13,6 +13,7 @@ import DocsList from '@/features/docs/DocsList'
 import DocsListSkeleton from '@/features/docs/DocsListSkeletons'
 import getSchoolAdmissions from '@/api/getSchoolAdmissions'
 
+
 export default function SchoolAdmissionPage() {
   return (
     <>

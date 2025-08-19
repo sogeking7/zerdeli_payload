@@ -247,10 +247,44 @@ export interface SchoolAdmission {
   id: number;
   slug: string;
   title: string;
+  titleKk?: string | null;
+  titleEn?: string | null;
   accordions?:
     | {
         title: string;
+        titleKk?: string | null;
+        titleEn?: string | null;
         content?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        contentKk?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        contentEn?: {
           root: {
             type: string;
             children: {
@@ -286,10 +320,44 @@ export interface SchoolParent {
   id: number;
   slug: string;
   title: string;
+  titleKk?: string | null;
+  titleEn?: string | null;
   accordions?:
     | {
         title: string;
+        titleKk?: string | null;
+        titleEn?: string | null;
         content?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        contentKk?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        contentEn?: {
           root: {
             type: string;
             children: {
@@ -325,10 +393,44 @@ export interface SchoolAbout {
   id: number;
   slug: string;
   title: string;
+  titleKk?: string | null;
+  titleEn?: string | null;
   accordions?:
     | {
         title: string;
+        titleKk?: string | null;
+        titleEn?: string | null;
         content?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        contentKk?: {
+          root: {
+            type: string;
+            children: {
+              type: string;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        } | null;
+        contentEn?: {
           root: {
             type: string;
             children: {
@@ -509,11 +611,17 @@ export interface ExamRegistrationRequestsSelect<T extends boolean = true> {
 export interface SchoolAdmissionSelect<T extends boolean = true> {
   slug?: T;
   title?: T;
+  titleKk?: T;
+  titleEn?: T;
   accordions?:
     | T
     | {
         title?: T;
+        titleKk?: T;
+        titleEn?: T;
         content?: T;
+        contentKk?: T;
+        contentEn?: T;
         files?:
           | T
           | {
@@ -533,11 +641,17 @@ export interface SchoolAdmissionSelect<T extends boolean = true> {
 export interface SchoolParentSelect<T extends boolean = true> {
   slug?: T;
   title?: T;
+  titleKk?: T;
+  titleEn?: T;
   accordions?:
     | T
     | {
         title?: T;
+        titleKk?: T;
+        titleEn?: T;
         content?: T;
+        contentKk?: T;
+        contentEn?: T;
         files?:
           | T
           | {
@@ -557,11 +671,17 @@ export interface SchoolParentSelect<T extends boolean = true> {
 export interface SchoolAboutSelect<T extends boolean = true> {
   slug?: T;
   title?: T;
+  titleKk?: T;
+  titleEn?: T;
   accordions?:
     | T
     | {
         title?: T;
+        titleKk?: T;
+        titleEn?: T;
         content?: T;
+        contentKk?: T;
+        contentEn?: T;
         files?:
           | T
           | {

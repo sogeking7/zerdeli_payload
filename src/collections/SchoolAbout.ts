@@ -14,11 +14,21 @@ export const SchoolAbout: CollectionConfig = {
       type: 'text',
       required: true,
     },
-    {
-      name: 'title',
-      type: 'text',
-      required: true,
-    },
+      {
+          name: 'title',
+          type: 'text',
+          required: true,
+      },
+      {
+          name: 'titleKk',
+          type: 'text',
+          required: false,
+      },
+      {
+          name: 'titleEn',
+          type: 'text',
+          required: false,
+      },
     {
       name: 'accordions',
       type: 'array',
@@ -29,6 +39,16 @@ export const SchoolAbout: CollectionConfig = {
           type: 'text',
           required: true,
         },
+          {
+              name: 'titleKk',
+              type: 'text',
+              required: false,
+          },
+          {
+              name: 'titleEn',
+              type: 'text',
+              required: false,
+          },
         {
           name: 'content',
           type: 'richText',
@@ -42,6 +62,16 @@ export const SchoolAbout: CollectionConfig = {
             ],
           }),
         },
+          {
+              name: 'contentKk',
+              type: 'richText',
+              required: false,
+          },
+          {
+              name: 'contentEn',
+              type: 'richText',
+              required: false,
+          },
         {
           name: 'files',
           type: 'array',

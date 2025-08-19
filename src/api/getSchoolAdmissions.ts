@@ -13,6 +13,8 @@ export default async function getSchoolAdmissions(minimal: boolean = false) {
       select: {
         slug: true,
         title: true,
+          titleKk: true,
+          titleEn: true,
       },
     }),
   })

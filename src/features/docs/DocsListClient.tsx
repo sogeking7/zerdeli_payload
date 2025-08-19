@@ -14,6 +14,7 @@ import Link from 'next/link'
 import { RichText } from '@/components/RichText'
 import { FileText } from 'lucide-react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useLocale } from 'next-intl'
 
 type DocsListClientProps = {
   docs: SchoolAbout[] | SchoolAdmission[] | SchoolParent[]
@@ -23,12 +24,13 @@ export default function DocsListClient({ docs }: DocsListClientProps) {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
+    const locale = useLocale()
 
-  const handleSetParam = (key: string, newVal: string) => {
-    const newSearchParams = new URLSearchParams(searchParams.toString())
-    newSearchParams.set(key, newVal)
-    router.push(`${pathname}?${newSearchParams.toString()}`)
-  }
+    const handleSetParam = (key: string, newVal: string) => {
+        const newSearchParams = new URLSearchParams(searchParams.toString())
+        newSearchParams.set(key, newVal)
+        router.push(`${pathname}?${newSearchParams.toString()}`)
+    }
 
   const searchTabId = searchParams.get('tabId')
 
@@ -37,7 +39,27 @@ export default function DocsListClient({ docs }: DocsListClientProps) {
   if (!docs || docs.length === 0) {
     return <p className="text-muted-foreground">Документы пока отсутствуют.</p>
   }
+    const getLocalizedTitle = (doc: any, currentLocale: string) => {
+        switch (currentLocale) {
+            case 'kk':
+                return doc.titleKk || doc.title
+            case 'en':
+                return doc.titleEn || doc.title
+            default:
+                return doc.title
+        }
+    }
 
+    const getLocalizedContent = (doc: any, currentLocale: string) => {
+        switch (currentLocale) {
+            case 'kk':
+                return doc.contentKk || doc.content
+            case 'en':
+                return doc.contentEn || doc.content
+            default:
+                return doc.content
+        }
+    }
   return (
     <Tabs
       value={activeTab}
@@ -58,7 +80,7 @@ export default function DocsListClient({ docs }: DocsListClientProps) {
                 value={doc.id.toString()}
                 className="lg:w-full text-left !px-0 w-auto flex-shrink-0 lg:flex-shrink justify-start data-[state=inactive]:!text-black/80 data-[state=active]:!text-[#4AA30A] data-[state=active]:bg-muted whitespace-nowrap lg:whitespace-normal text-sm lg:text-base py-2"
               >
-                {doc.title}
+                  {getLocalizedTitle(doc, locale)}
               </TabsTrigger>
             ))}
           </TabsList>
@@ -67,7 +89,7 @@ export default function DocsListClient({ docs }: DocsListClientProps) {
         {/* Content */}
         <div className="lg:w-3/4 w-full min-h-0">
           <h2 className="md:text-3xl mb-8 text-xl font-semibold">
-            {docs.find((d) => d.id.toString() === activeTab)?.title}
+              {getLocalizedTitle(docs.find((d) => d.id.toString() === activeTab), locale)}
           </h2>
           {docs.map((doc) => (
             <TabsContent key={doc.id} value={doc.id.toString()} className="mt-0 h-full">
@@ -76,11 +98,13 @@ export default function DocsListClient({ docs }: DocsListClientProps) {
                   {doc.accordions?.map((accordion, i) => (
                     <AccordionItem key={i} value={`item-${i}`}>
                       <AccordionTrigger className="border-b text-left">
-                        {accordion.title}
+                          {getLocalizedTitle(accordion, locale)}
                       </AccordionTrigger>
                       <AccordionContent>
                         <article className="prose prose-sm lg:prose text-black max-w-none">
-                          {accordion.content && <RichText data={accordion.content} />}
+                            {getLocalizedContent(accordion, locale)  && (
+                                <RichText data={getLocalizedContent(accordion, locale)} />
+                            )}
                         </article>
 
                         {accordion.files && accordion.files?.length > 0 && (

@@ -14,7 +14,7 @@ import DocsListSkeleton from '@/features/docs/DocsListSkeletons'
 import getSchoolParents from '@/api/getSchoolParents'
 
 export default function SchoolParentsPage() {
-  return (
+    return (
     <>
       <section id="docs">
         <Container>
@@ -30,9 +30,9 @@ export default function SchoolParentsPage() {
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
-            <h1 className="mt-8 md:mt-10 mb-10 md:text-4xl text-2xl font-semibold">Родителям</h1>
-            <Suspense fallback={<DocsListSkeleton />}>
-              <DocsList getDocs={getSchoolParents} />
+              <h1 className="mt-8 md:mt-10 mb-10 md:text-4xl text-2xl font-semibold">Родилетям</h1>
+              <Suspense fallback={<DocsListSkeleton />}>
+                  <DocsList getDocs={getSchoolParents}  />
             </Suspense>
           </div>
         </Container>

@@ -9,7 +9,7 @@ export default async function DocsList({
     minimal?: boolean | undefined,
   ) => Promise<
     PaginatedDocs<
-      SchoolParent | SchoolAbout | SchoolAdmission | { id: number; slug: string; title: string }
+      SchoolParent | SchoolAbout | SchoolAdmission | { id: number; slug: string; titleEn?: string | null | undefined; titleKk?: string | null | undefined; title: string }
     >
   >
 }) {
