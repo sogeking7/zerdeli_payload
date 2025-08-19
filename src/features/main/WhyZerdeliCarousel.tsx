@@ -18,6 +18,9 @@ const reviews = [
   { img: '/main/reviews/review-2.webp' },
   { img: '/main/reviews/review-3.webp' },
   { img: '/main/reviews/review-4.webp' },
+    { img: '/main/reviews/review-5.webp' }, // новый
+    { img: '/main/reviews/review-6.webp' }, // новый
+    { img: '/main/reviews/review-7.webp' },
 ] as const
 
 export default function WhyZerdeliCarousel() {
