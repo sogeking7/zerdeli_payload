@@ -13,6 +13,13 @@ import Link from 'next/link'
 import Container from './custom/Container'
 import { useMemo, useState } from 'react'
 
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from '@/components/ui/accordion'
+
 import { SearchOverlay } from '@/features/search/SearchSection'
 import LocaleSwitcher from '@/components/LocaleSwitcher'
 import { useTranslations } from 'next-intl'
@@ -128,30 +135,45 @@ export default function SchoolHeader({
                     <Image src={'/svg/logo.svg'} width={80} height={50} alt="Zerdeli" />
                   </Link>
                 </DrawerHeader>
-                <nav className="flex flex-col space-y-4 py-6">
-                  {navItems.map((item, index) => (
-                    <div key={index} className="flex flex-col">
-                      {item.dropdown ? (
-                        <>
-                          {item.dropdown.map((subItem, subIndex) => (
-                            <Button
-                              asChild
-                              onClick={() => setOpen(false)}
-                              variant="ghost"
-                              key={subIndex}
-                            >
-                              <Link href={subItem.href}>{subItem.label}</Link>
-                            </Button>
-                          ))}
-                        </>
-                      ) : (
-                        <Button asChild variant="ghost" key={index} onClick={() => setOpen(false)}>
-                          <Link href={item.href}>{item.label} </Link>
-                        </Button>
-                      )}
-                    </div>
-                  ))}
-                </nav>
+                  <nav className="flex flex-col py-6">
+                      <Accordion type="single" collapsible className="w-full">
+                          {navItems.map((item, index) =>
+                              item.dropdown ? (
+                                  <AccordionItem key={index} value={`item-${index}`}>
+                                      <AccordionTrigger className="text-left px-2">
+                                          {item.label}
+                                      </AccordionTrigger>
+                                      <AccordionContent>
+                                          <div className="flex flex-col space-y-2 pl-4">
+                                              {item.dropdown.map((subItem, subIndex) => (
+                                                  <Button
+                                                      asChild
+                                                      key={subIndex}
+                                                      variant="ghost"
+                                                      onClick={() => setOpen(false)}
+                                                      className="justify-start"
+                                                  >
+                                                      <Link href={subItem.href}>{subItem.label}</Link>
+                                                  </Button>
+                                              ))}
+                                          </div>
+                                      </AccordionContent>
+                                  </AccordionItem>
+                              ) : (
+                                  <Button
+                                      asChild
+                                      variant="ghost"
+                                      key={index}
+                                      onClick={() => setOpen(false)}
+                                      className="justify-start"
+                                  >
+                                      <Link href={item.href}>{item.label}</Link>
+                                  </Button>
+                              )
+                          )}
+                      </Accordion>
+                  </nav>
+
               </DrawerContent>
             </Drawer>
           </div>
