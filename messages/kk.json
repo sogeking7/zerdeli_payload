@@ -173,10 +173,11 @@
   "AboutPage": {
     "breadcrumb": {
       "home": "Басты бет",
-      "about": "Мектеп туралы"
+      "about": "Мектеп туралы",
+      "title": "Zerdeli туралы"
     },
     "hero": {
-      "titleTop": "Zerdeli туралы",
+      "title": "Zerdeli туралы",
       "titleBottom": "International School",
       "description": "ZIS — математика мен логиканы, ағылшын тілін және информатиканы тереңдетіп оқытатын, ұлттық құндылықтарды дәріптейтін халықаралық мектеп."
     },
@@ -358,12 +359,19 @@
       }
     }
   },
-  "SchoolParentPage": {
+  "SchoolAboutPage": {
     "breadcrumb": {
       "home": "Басты бет",
       "about": "Мектеп туралы"
     },
     "title": "ZIS туралы"
+  },
+  "SchoolParentsPage": {
+    "breadcrumb": {
+      "home": "Басты бет",
+      "about": "Мектеп туралы"
+    },
+    "title": "Ата-аналарға"
   },
   "AdmissionRulesPage": {
     "breadcrumb": {

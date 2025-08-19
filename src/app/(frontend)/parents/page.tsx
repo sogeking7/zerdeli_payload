@@ -15,7 +15,7 @@ import getSchoolParents from '@/api/getSchoolParents'
 import {useTranslations} from "next-intl";
 
 export default function SchoolParentsPage() {
-    const t = useTranslations("SchoolParentPage");
+    const t = useTranslations("SchoolParentsPage");
     return (
     <>
       <section id="docs">
