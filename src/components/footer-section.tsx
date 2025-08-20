@@ -1,13 +1,14 @@
-import React, { useMemo } from 'react'
 import Image from 'next/image'
-
 import Container from './custom/Container'
 import Link from 'next/link'
-import { useTranslations } from 'next-intl'
+import getSchoolAbouts from '@/api/getSchoolAbouts'
+import getSchoolAdmissions from '@/api/getSchoolAdmissions'
+import getSchoolParents from '@/api/getSchoolParents'
+import { getLocale, getTranslations } from 'next-intl/server'
 
 interface FooterLinksColumnProps {
   title: string
-  links: { text: string; href: string }[]
+  links: { label: string; href: string }[]
 }
 
 const FooterLinksColumn = ({ title, links }: FooterLinksColumnProps) => (
@@ -16,7 +17,7 @@ const FooterLinksColumn = ({ title, links }: FooterLinksColumnProps) => (
     <div className="flex flex-col gap-4">
       {links.map((link, index) => (
         <Link key={index} href={link.href} className="text-sm text-black/60">
-          {link.text}
+          {link.label}
         </Link>
       ))}
     </div>
@@ -25,47 +26,61 @@ const FooterLinksColumn = ({ title, links }: FooterLinksColumnProps) => (
 
 // -- Основной компонент футера --
 
-export default function Footer() {
-  const t = useTranslations('Footer')
+export default async function Footer() {
+  const t = await getTranslations('Footer')
+  const locale = await getLocale()
 
-  // Данные для колонок ссылок
-  const linkColumns = useMemo(
-    () => [
-      {
-        title: t('columns.aboutZIS.title'),
-        links: [
-          { text: t('columns.aboutZIS.links.about'), href: '#' },
-          { text: t('columns.aboutZIS.links.teachers'), href: '#' },
-          { text: t('columns.aboutZIS.links.corporateGovernance'), href: '#' },
-          { text: t('columns.aboutZIS.links.programs'), href: '#' },
-          { text: t('columns.aboutZIS.links.regulatoryFramework'), href: '/regulatory-framework' },
-          { text: t('columns.aboutZIS.links.license'), href: '#' },
-          { text: t('columns.aboutZIS.links.charity'), href: '#' },
-        ],
-      },
-      {
-        title: t('columns.admission.title'),
-        links: [
-          { text: t('columns.admission.links.admissionRules'), href: '/admission-rules' },
-          { text: t('columns.admission.links.enrollmentDocs'), href: '#' },
-          { text: t('columns.admission.links.documentsSchedule'), href: '#' },
-          { text: t('columns.admission.links.schoolTransfer'), href: '#' },
-          { text: t('columns.admission.links.benefits'), href: '#' },
-        ],
-      },
-      {
-        title: t('columns.parents.title'),
-        links: [
-          { text: t('columns.parents.links.parentCommittee'), href: '#' },
-          { text: t('columns.parents.links.eDiary'), href: '#' },
-          { text: t('columns.parents.links.accessibility'), href: '#' },
-          { text: t('columns.parents.links.safety'), href: '#' },
-          { text: t('columns.parents.links.admission'), href: '#' },
-        ],
-      },
-    ],
-    [t],
-  )
+  let schoolAbouts: { label: string; href: string }[] = []
+  let schoolAdmissions: { label: string; href: string }[] = []
+  let schoolParents: { label: string; href: string }[] = []
+
+  const getLocalizedTitle = (doc: any, currentLocale: string) => {
+    switch (currentLocale) {
+      case 'kk':
+        return doc.titleKk || doc.title
+      case 'en':
+        return doc.titleEn || doc.title
+      default:
+        return doc.title
+    }
+  }
+
+  try {
+    const results = await Promise.all([
+      getSchoolAbouts(true),
+      getSchoolAdmissions(true),
+      getSchoolParents(true),
+    ])
+    schoolAbouts = results[0].docs.map((doc: any) => ({
+      label: getLocalizedTitle(doc, locale),
+      href: '/school-about?tabId=' + doc.id,
+    }))
+    schoolAdmissions = results[1].docs.map((doc: any) => ({
+      label: getLocalizedTitle(doc, locale),
+      href: '/admission?tabId=' + doc.id,
+    }))
+    schoolParents = results[2].docs.map((doc: any) => ({
+      label: getLocalizedTitle(doc, locale),
+      href: '/parents?tabId=' + doc.id,
+    }))
+  } catch (error) {
+    console.error('Failed to fetch footer links:', error)
+  }
+
+  const linkColumns = [
+    {
+      title: t('columns.aboutZIS.title'),
+      links: schoolAbouts,
+    },
+    {
+      title: t('columns.admission.title'),
+      links: schoolAdmissions,
+    },
+    {
+      title: t('columns.parents.title'),
+      links: schoolParents,
+    },
+  ]
 
   // Данные для контактов
   const contacts = [
